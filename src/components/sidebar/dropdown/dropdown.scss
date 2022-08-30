@@ -1,0 +1,18 @@
+.dropdown {
+  .title {
+    display: flex;
+    align-items: center;
+  }
+  .menu {
+    display: none;
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    .menu-item {
+    }
+  }
+
+  .menu.active {
+    opacity: 1;
+    display: block;
+  }
+}
