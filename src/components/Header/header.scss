@@ -3,9 +3,11 @@
   font-size: 18px;
   line-height: 135%;
   letter-spacing: 0.01em;
-  width: 100%;
+  min-width: 100%;
   background: #1d1f30;
   color: #c6c6c6;
+  align-self: flex-start;
+
   .container {
     width: 95%;
     margin: 0 auto;

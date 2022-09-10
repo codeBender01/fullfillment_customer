@@ -1,39 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import nav from "../../data/navData";
 import "./header.scss";
-
-const nav = [
-  {
-    id: 1,
-    name: "Bortda",
-    path: "/",
-  },
-  {
-    id: 2,
-    name: "Düşünjeler",
-    path: "/services",
-  },
-  {
-    id: 3,
-    name: "Sargytlar",
-    path: "/about",
-  },
-  {
-    id: 4,
-    name: "Iberişler",
-    path: "/technologies",
-  },
-  {
-    id: 5,
-    name: "Önümler",
-    path: "/contactus",
-  },
-  {
-    id: 6,
-    name: "Müşderiler",
-    path: "/contactus",
-  },
-];
 
 function Header() {
   const [selectedNavbarLink, setSelectedNavbarLink] = useState(nav[0].id);
@@ -68,12 +36,14 @@ function Header() {
   };
 
   return (
-    <header className="header">
-      <div className="container">
-        <div className="logo">Logo</div>
-        <ul className="header-links">{renderedNavbarLinks()}</ul>
-      </div>
-    </header>
+    <>
+      <header className="header">
+        <div className="container">
+          <div className="logo">Logo</div>
+          <ul className="header-links">{renderedNavbarLinks()}</ul>
+        </div>
+      </header>
+    </>
   );
 }
 
