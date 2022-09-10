@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Lato";
+  src: url("../public/fonts/Lato-Regular.ttf") format("truetype");
+}
+
+*,
+body {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+  font-family: Lato;
+  font-family: Lato, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+.flex {
+  display: flex;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
