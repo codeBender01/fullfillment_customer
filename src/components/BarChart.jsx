@@ -9,7 +9,6 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import faker from "faker";
 
 ChartJS.register(
   CategoryScale,
@@ -24,33 +23,68 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: "top",
+      display: false,
     },
     title: {
-      display: true,
-      text: "Chart.js Bar Chart",
+      display: false,
+    },
+    subtitle: {
+      display: false,
+    },
+  },
+  scales: {
+    bar: {
+      ticks: {
+        min: 0,
+        stepSize: 0.2,
+        beginAtZero: true,
+      },
+      grid: {
+        display: false,
+      },
     },
   },
 };
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
+const labels = [
+  "07/12",
+  "07/14",
+  "07/18",
+  "07/20",
+  "07/22",
+  "07/24",
+  "07/26",
+  "07/28",
+  "07/30",
+  "08/01",
+];
 
 export const data = {
   labels,
   datasets: [
     {
-      label: "Dataset 1",
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-    {
-      label: "Dataset 2",
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
+      label: "",
+      data: [0, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+      backgroundColor: [
+        "#D9D9D9",
+        "#D9D9D9",
+        "#D9D9D9",
+        "#D9D9D9",
+        "#D9D9D9",
+        "#D9D9D9",
+        "#774CD0",
+        "#D9D9D9",
+        "#D9D9D9",
+        "#5681EF",
+      ],
+
+      barPercentage: 1.0,
+      categoryPercentage: 1.0,
+      yAxisID: "bar",
     },
   ],
 };
 
 export default function Chart() {
-  return <Bar options={options} data={data} />;
+  return <Bar height={120} options={options} data={data} />;
 }

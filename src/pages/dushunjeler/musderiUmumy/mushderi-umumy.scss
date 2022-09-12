@@ -1,0 +1,120 @@
+.customer {
+  width: 100%;
+  height: 100%;
+  .title-customer {
+    padding: 40px 0 20px 0;
+    border-bottom: 1px solid #bfbfbf;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    h1 {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 135%;
+    }
+  }
+
+  .chart {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .labels {
+    margin: 20px auto;
+    width: 35%;
+    display: flex;
+    text-align: center;
+
+    .label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 5px;
+      span {
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 135%;
+        letter-spacing: 0.01em;
+        margin-left: 5px;
+      }
+    }
+
+    .new-order {
+      width: 10px;
+      height: 10px;
+      background-color: #774cd0;
+    }
+    .returns {
+      width: 10px;
+      height: 10px;
+      background-color: #5681ef;
+    }
+  }
+
+  .stats {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    margin: 0 auto;
+    span {
+      display: table;
+      text-align: center;
+      width: 100%;
+    }
+
+    .stat {
+      .stat-text {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 135%;
+        letter-spacing: 0.01em;
+      }
+
+      .number {
+        font-weight: 500;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .saved-info {
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    .info-title {
+      line-height: 135%;
+      letter-spacing: 0.01em;
+    }
+
+    .info {
+      width: 45%;
+      div {
+        border: 1px solid #7a7a7a;
+        padding: 5px 8px;
+        span {
+          font-weight: 400;
+          line-height: 135%;
+          letter-spacing: 0.01em;
+          color: #7a7a7a;
+        }
+      }
+
+      .props {
+        display: flex;
+        justify-content: space-between;
+        span {
+          font-size: 10px;
+        }
+      }
+
+      .data {
+        display: flex;
+        justify-content: space-between;
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

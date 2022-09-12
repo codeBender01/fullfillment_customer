@@ -58,17 +58,17 @@
     background: #fbb065;
     color: #000;
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: 0;
-      border-top: 8px solid transparent;
-      border-bottom: 8px solid transparent;
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   top: 50%;
+    //   right: 0;
+    //   border-top: 8px solid transparent;
+    //   border-bottom: 8px solid transparent;
 
-      border-right: 8px solid #fff;
-      transform: translateY(-50%);
-    }
+    //   border-right: 8px solid #fff;
+    //   transform: translateY(-50%);
+    // }
     .menu {
       display: block;
       opacity: 1;

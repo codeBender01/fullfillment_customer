@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 
 const Bortda = lazy(() => import("./pages/bortda/bortda"));
+const Dushunjeler = lazy(() => import("./pages/dushunjeler/dushunjeler"));
 
 function App() {
   return (
@@ -21,8 +22,8 @@ function App() {
           <Routes>
             <Route exact path="/bortda" element={<Bortda />} />
             <Route path="/" element={<Navigate to="/bortda" replace />} />
+            <Route path="/dushunjeler/*" element={<Dushunjeler />}></Route>
             {/* <Route path="/services" element={<Services />} />
-        <Route path="/about" element={<About />} />
         <Route path="/technologies" element={<Technologies />} />
         <Route path="/contactus" element={<ContactUs />} /> */}
           </Routes>

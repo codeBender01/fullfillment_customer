@@ -4,6 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import nav from "../../data/navData";
 import { useLocation } from "react-router-dom";
+import StickyBox from "react-sticky-box";
 import "./sidebar.scss";
 
 function Sidebar() {
@@ -31,23 +32,25 @@ function Sidebar() {
   const sideNav = sendCurrentSidebar();
 
   return (
-    <div className="sidebar">
-      <div className="search-field">
-        <div className="input">
-          <input type="text" />
-          <IconContext.Provider value={{ color: "white", size: "20px" }}>
-            <AiOutlineSearch />
-          </IconContext.Provider>
+    <StickyBox offsetTop={20} offsetBottom={20}>
+      <div className="sidebar">
+        <div className="search-field">
+          <div className="input">
+            <input type="text" />
+            <IconContext.Provider value={{ color: "white", size: "20px" }}>
+              <AiOutlineSearch />
+            </IconContext.Provider>
+          </div>
+          <span className="gozleg">Giňişleýin gözleg...</span>
         </div>
-        <span className="gozleg">Giňişleýin gözleg...</span>
-      </div>
 
-      {sideNav
-        ? sideNav.map((title) => {
-            return <Dropdown title={title} key={title.id} />;
-          })
-        : ""}
-    </div>
+        {sideNav
+          ? sideNav.map((title) => {
+              return <Dropdown title={title} key={title.id} />;
+            })
+          : ""}
+      </div>
+    </StickyBox>
   );
 }
 

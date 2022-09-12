@@ -9,8 +9,17 @@ function Header() {
 
   useEffect(() => {
     for (let n of nav) {
-      if (location.pathname === n.path) {
-        setSelectedNavbarLink(n.id);
+      if (n.sidebar) {
+        for (let title of n.sidebar.titles) {
+          if (
+            location.pathname === n.path ||
+            location.pathname === title.path
+          ) {
+            if (n.sidebar) {
+              setSelectedNavbarLink(n.id);
+            }
+          }
+        }
       }
     }
   }, [location.pathname]);

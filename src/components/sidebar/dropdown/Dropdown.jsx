@@ -34,7 +34,7 @@ function Dropdown(props) {
         setSelectedDrop(props.title.id);
       }
     }
-  }, [location.pathname]);
+  }, [location.pathname, props.title.id, props.title.path]);
 
   return (
     <div className="dropdown">
