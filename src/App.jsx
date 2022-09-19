@@ -11,6 +11,7 @@ import {
 
 const Bortda = lazy(() => import("./pages/bortda/bortda"));
 const Dushunjeler = lazy(() => import("./pages/dushunjeler/dushunjeler"));
+const Sargytlar = lazy(() => import("./pages/sargytlar/sargytlar"));
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route exact path="/bortda" element={<Bortda />} />
             <Route path="/" element={<Navigate to="/bortda" replace />} />
             <Route path="/dushunjeler/*" element={<Dushunjeler />}></Route>
+            <Route path="/sargytlar/*" element={<Sargytlar />}></Route>
             {/* <Route path="/services" element={<Services />} />
         <Route path="/technologies" element={<Technologies />} />
         <Route path="/contactus" element={<ContactUs />} /> */}

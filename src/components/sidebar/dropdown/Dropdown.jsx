@@ -6,22 +6,25 @@ import { NavLink, useLocation } from "react-router-dom";
 import "./dropdown.scss";
 
 function Dropdown(props) {
-  const [selectedDrop, setSelectedDrop] = useState(null);
+  // const [selectedDrop, setSelectedDrop] = useState(null);
+  const { selectedDrop, setSelectedDrop } = props;
+  const { isActive, onClick } = props;
   const location = useLocation();
 
-  function applyActiveClass(id) {
-    const drops = document.querySelectorAll(".sidebar-drop");
-    for (let d of drops) {
-      if (d.classList.contains("title-active")) {
-        d.classList.remove("title-active");
-        setSelectedDrop(-1);
-      } else if (id === selectedDrop && selectedDrop) {
-        setSelectedDrop(-1);
-      } else {
-        setSelectedDrop(id);
-      }
-    }
-  }
+  // function applyActiveClass(id) {
+  //   const drops = document.querySelectorAll(".sidebar-drop");
+  //   for (let d of drops) {
+  //     // if (d.classList.contains("title-active")) {
+  //     //   d.classList.remove("title-active");
+  //     //   setSelectedDrop(-1);
+  //     // } else
+  //     if (selectedDrop && id === selectedDrop) {
+  //       setSelectedDrop(-1);
+  //     } else {
+  //       setSelectedDrop(id);
+  //     }
+  //   }
+  // }
 
   function menuStandStill(event) {
     event.stopPropagation();
@@ -39,16 +42,17 @@ function Dropdown(props) {
   return (
     <div className="dropdown">
       <div
-        className={`sidebar-drop ${
-          selectedDrop === props.title.id ? "title-active" : ""
-        }`}
-        onClick={() => applyActiveClass(props.title.id)}
+        className={`sidebar-drop ${isActive ? "title-active" : ""}`}
+        onClick={onClick}
       >
+        {/* {isActive
+          ? props.activeIcon || props.icon
+          : props.icon} */}
         {props.title.path ? (
           <NavLink to={props.title.path}>
             <div className="title">
               {props.title.isIcon ? (
-                selectedDrop === props.title.id ? (
+                isActive ? (
                   <IoIosArrowDown />
                 ) : (
                   <IoIosArrowForward />
@@ -61,7 +65,7 @@ function Dropdown(props) {
         ) : (
           <div className="title">
             {props.title.isIcon ? (
-              selectedDrop === props.title.id ? (
+              isActive ? (
                 <IoIosArrowDown />
               ) : (
                 <IoIosArrowForward />
@@ -74,25 +78,23 @@ function Dropdown(props) {
         {props.title.subMenu
           ? props.title.subMenu.map((menuItem) => {
               return (
-                <ul
-                  className={`menu `}
-                  key={menuItem.id}
-                  onClick={menuStandStill}
-                >
-                  <li className="menu-item">
-                    <IconContext.Provider
-                      value={{
-                        color: `${menuItem.color ? menuItem.color : ""}`,
-                      }}
-                    >
-                      {menuItem.icon}
-                    </IconContext.Provider>
-                    <span>{menuItem.text}</span>
-                  </li>
-                </ul>
+                <NavLink to={menuItem.path} key={menuItem.id}>
+                  <ul className={`menu `} onClick={menuStandStill}>
+                    <li className="menu-item">
+                      <IconContext.Provider
+                        value={{
+                          color: `${menuItem.color ? menuItem.color : ""}`,
+                        }}
+                      >
+                        {menuItem.icon}
+                      </IconContext.Provider>
+                      <span>{menuItem.text}</span>
+                    </li>
+                  </ul>
+                </NavLink>
               );
             })
-          : ""}
+          : null}
       </div>
     </div>
   );

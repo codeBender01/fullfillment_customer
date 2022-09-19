@@ -82,26 +82,31 @@ const nav = [
               id: "ib-1",
               text: "Soňky",
               icon: <RiCalendar2Fill />,
+              path: "/sargytlar/iberildi/sonky",
             },
             {
               id: "ib-2",
               text: "Tranzitda",
               icon: <FaMotorcycle />,
+              path: "/sargytlar/iberildi/tranzitda",
             },
             {
               id: "ib-3",
               text: "Gowşuryldy",
               icon: <TiTickOutline />,
+              path: "/sargytlar/iberildi/gowshuryldy",
             },
             {
               id: "ib-4",
               text: "Gowşurylmakda mesele çykanlar",
               icon: <AiFillInfoCircle />,
+              path: "/sargytlar/iberildi/meselecykanlar",
             },
             {
               id: "ib-5",
               text: "Ýatyrylanlar",
               icon: <IoCloseCircle />,
+              path: "/sargytlar/iberildi/yatyrylanlar",
             },
           ],
         },
@@ -114,31 +119,37 @@ const nav = [
               id: "y-1",
               text: "Soňky",
               icon: <RiCalendar2Fill />,
+              path: "/sargytlar/yerineyetirmek/sonky",
             },
             {
               id: "y-2",
               text: "Garaşylýar",
               icon: <AiOutlineClockCircle />,
+              path: "/sargytlar/yerineyetirmek/garashylyar",
             },
             {
               id: "y-3",
               text: "Tranzitda",
               icon: <FaMotorcycle />,
+              path: "/sargytlar/yerineyetirmek/tranzitda",
             },
             {
               id: "y-4",
               text: "Gowşuryldy",
               icon: <TiTickOutline />,
+              path: "/sargytlar/yerineyetirmek/gowshuryldy",
             },
             {
               id: "y-5",
               text: "Gowşurylmakda mesele çykanlar",
               icon: <AiFillInfoCircle />,
+              path: "/sargytlar/yerineyetirmek/meselecykanlar",
             },
             {
               id: "y-6",
               text: "Ýatyrylanlar",
               icon: <IoCloseCircle />,
+              path: "/sargytlar/yerineyetirmek/yatyrylanlar",
             },
           ],
         },
@@ -151,21 +162,26 @@ const nav = [
           id: 4,
           text: "Toparlar",
           isIcon: true,
+          path: "/sargytlar/toparlar",
+
           subMenu: [
             {
               id: "tp-1",
               text: "Aç",
               icon: <AiFillFolder />,
+              path: "/sargytlar/toparlar/ach",
             },
             {
               id: "tp-2",
               text: "Işlenildi",
               icon: <TiTickOutline />,
+              path: "/sargytlar/toparlar/ishlenildi",
             },
             {
               id: "tp-3",
               text: "Arhiwlenen",
               icon: <GrDocumentUpload />,
+              path: "/sargytlar/toparlar/arhiwlenen",
             },
           ],
         },
@@ -176,8 +192,6 @@ const nav = [
     id: 4,
     name: "Iberişler",
     path: "/iberishler",
-    hasPath: false,
-    internalPath: false,
 
     sidebar: {
       titles: [
@@ -191,6 +205,7 @@ const nav = [
               text: "El bilen sargytlar",
               icon: <FaCog />,
               color: "#0FA568",
+              path: "/iberishler/toleggarashyanlar/sargyt",
             },
           ],
         },
@@ -198,12 +213,14 @@ const nav = [
           id: 2,
           text: "Tutulanlar",
           isIcon: true,
+
           subMenu: [
             {
               id: "tu",
               text: "El bilen sargytlar",
               icon: <FaCog />,
               color: "#0FA568",
+              path: "/iberishler/toleggarashyanlar/sargyt",
             },
           ],
         },
@@ -217,6 +234,7 @@ const nav = [
               text: "El bilen sargytlar",
               icon: <FaCog />,
               color: "#0FA568",
+              path: "/iberishler/ibergarashyanlar/sargyt",
             },
           ],
         },
@@ -245,18 +263,22 @@ const nav = [
         {
           id: 1,
           text: "Önümler",
+          path: "/onumler/onumler",
         },
         {
           id: 2,
           text: "Öňünden düzülen topar",
+          path: "/onumler/duzulen",
         },
         {
           id: 3,
           text: "Daşaýjy alyp gitmek",
+          path: "/onumler/dasayjy",
         },
         {
           id: 4,
           text: "Inwentar",
+          path: "/onumler/inwentar",
         },
       ],
     },
