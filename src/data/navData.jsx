@@ -162,7 +162,6 @@ const nav = [
           id: 4,
           text: "Toparlar",
           isIcon: true,
-          path: "/sargytlar/toparlar",
 
           subMenu: [
             {
