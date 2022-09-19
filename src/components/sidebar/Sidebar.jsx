@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Dropdown from "./dropdown/Dropdown";
 import { AiOutlineSearch } from "react-icons/ai";
 import { IconContext } from "react-icons";
@@ -24,12 +24,30 @@ function Sidebar() {
               return [];
             }
           }
+
+          if (title.subMenu) {
+            for (let subMenu of title.subMenu) {
+              if (
+                location.pathname === n.path ||
+                location.pathname === title.path ||
+                location.pathname === subMenu.path
+              ) {
+                if (n.sidebar) {
+                  return n.sidebar.titles;
+                } else {
+                  return [];
+                }
+              }
+            }
+          }
         }
       }
     }
   };
 
   const sideNav = sendCurrentSidebar();
+
+  const [selectedDrop, setSelectedDrop] = useState(null);
 
   return (
     <StickyBox offsetTop={20} offsetBottom={20}>
@@ -46,7 +64,18 @@ function Sidebar() {
 
         {sideNav
           ? sideNav.map((title) => {
-              return <Dropdown title={title} key={title.id} />;
+              return (
+                <Dropdown
+                  title={title}
+                  key={title.id + title.text}
+                  selectedDrop={selectedDrop}
+                  setSelectedDrop={setSelectedDrop}
+                  isActive={title.id === selectedDrop}
+                  onClick={() =>
+                    setSelectedDrop(title.id === selectedDrop ? null : title.id)
+                  }
+                />
+              );
             })
           : ""}
       </div>

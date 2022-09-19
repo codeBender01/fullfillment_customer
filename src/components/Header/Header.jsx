@@ -19,6 +19,20 @@ function Header() {
               setSelectedNavbarLink(n.id);
             }
           }
+
+          if (title.subMenu) {
+            for (let subMenu of title.subMenu) {
+              if (
+                location.pathname === n.path ||
+                location.pathname === title.path ||
+                location.pathname === subMenu.path
+              ) {
+                if (n.sidebar) {
+                  setSelectedNavbarLink(n.id);
+                }
+              }
+            }
+          }
         }
       }
     }
