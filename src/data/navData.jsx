@@ -267,12 +267,12 @@ const nav = [
         {
           id: 2,
           text: "Öňünden düzülen topar",
-          path: "/onumler/duzulen",
+          path: "/onumler/onunden",
         },
         {
           id: 3,
-          text: "Daşaýjy alyp gitmek",
-          path: "/onumler/dasayjy",
+          text: "Hasabat kategoriýalary",
+          path: "/onumler/hasabat",
         },
         {
           id: 4,

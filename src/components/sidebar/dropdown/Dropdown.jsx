@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import { IconContext } from "react-icons";
 import { NavLink, useLocation } from "react-router-dom";
@@ -6,25 +6,9 @@ import { NavLink, useLocation } from "react-router-dom";
 import "./dropdown.scss";
 
 function Dropdown(props) {
-  // const [selectedDrop, setSelectedDrop] = useState(null);
   const { selectedDrop, setSelectedDrop } = props;
   const { isActive, onClick } = props;
   const location = useLocation();
-
-  // function applyActiveClass(id) {
-  //   const drops = document.querySelectorAll(".sidebar-drop");
-  //   for (let d of drops) {
-  //     // if (d.classList.contains("title-active")) {
-  //     //   d.classList.remove("title-active");
-  //     //   setSelectedDrop(-1);
-  //     // } else
-  //     if (selectedDrop && id === selectedDrop) {
-  //       setSelectedDrop(-1);
-  //     } else {
-  //       setSelectedDrop(id);
-  //     }
-  //   }
-  // }
 
   function menuStandStill(event) {
     event.stopPropagation();
@@ -45,9 +29,6 @@ function Dropdown(props) {
         className={`sidebar-drop ${isActive ? "title-active" : ""}`}
         onClick={onClick}
       >
-        {/* {isActive
-          ? props.activeIcon || props.icon
-          : props.icon} */}
         {props.title.path ? (
           <NavLink to={props.title.path}>
             <div className="title">
