@@ -1,27 +1,42 @@
 import React from "react";
-import Select from "../../../../components/Select/Select";
-import FilterSelect from "../../../../components/FilterSelect/FilterSelect";
+import Select from "../../../components/Select/Select";
+import FilterSelect from "../../../components/FilterSelect/FilterSelect";
 
 const selectBtns = [
   {
     id: 1,
-    text: "Topary belläň",
+    text: "Bölmek",
+  },
+  {
+    id: 2,
+    text: "Import",
+
+    items: [
+      {
+        id: 1,
+        label: "option 1",
+      },
+      {
+        id: 2,
+        label: "option 2",
+      },
+      {
+        id: 3,
+        label: "option 3",
+      },
+    ],
   },
 
   {
-    id: 2,
-    text: "Topary arhiwle",
-  },
-  {
     id: 3,
-    text: "Topary ýatyr",
+    text: "Eksport",
   },
 ];
 
 const filterBtns = [
   {
     id: 1,
-    text: "Bellenen",
+    text: "Duýduryş",
     options: [
       { id: 1, text: "opt1" },
       { id: 2, text: "opt2" },
@@ -29,7 +44,7 @@ const filterBtns = [
   },
   {
     id: 2,
-    text: "Döredilen senesi",
+    text: "Döredildi",
     options: [
       { id: 1, text: "opt1" },
       { id: 2, text: "opt2" },
@@ -37,7 +52,7 @@ const filterBtns = [
   },
   {
     id: 3,
-    text: "Beýlekiler",
+    text: "Gözegçilik",
     options: [
       { id: 1, text: "opt1" },
       { id: 2, text: "opt2" },
@@ -45,11 +60,11 @@ const filterBtns = [
   },
 ];
 
-class Ach extends React.Component {
+class Inwentar extends React.Component {
   render() {
     return (
       <div className="iber-sonky nested-page">
-        <h1>Toparlar /Aç</h1>
+        <h1>Toparlar</h1>
         <div className="select-btns" id="minuscule">
           {selectBtns.map((btn) => {
             return <Select btn={btn} key={btn.id + btn.text} />;
@@ -68,4 +83,4 @@ class Ach extends React.Component {
   }
 }
 
-export default Ach;
+export default Inwentar;

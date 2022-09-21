@@ -9,7 +9,8 @@ const MeseleCykanlar = lazy(() =>
 );
 const Yatyrylanlar = lazy(() => import("./iberildi/yatyrylanlar/yatyrylanlar"));
 const YerineSonky = lazy(() => import("./yerineYetirmek/sonky/sonky"));
-const Ac = lazy(() => import("./toparlar/ac/ac"));
+const Ach = lazy(() => import("./toparlar/ac/ac"));
+const Ishlenildi = lazy(() => import("./toparlar/ishlenildi/ishlenildi"));
 const Arhiwlenen = lazy(() => import("./toparlar/arhiwlenen/arhiwlenen"));
 
 class Sargytlar extends React.Component {
@@ -23,7 +24,8 @@ class Sargytlar extends React.Component {
           <Route path="/iberildi/meselecykanlar" element={<MeseleCykanlar />} />
           <Route path="/iberildi/yatyrylanlar" element={<Yatyrylanlar />} />
           <Route path="/yerineyetirmek/sonky" element={<YerineSonky />} />
-          <Route path="/toparlar/ach" element={<Ac />} />
+          <Route path="/toparlar/ach" element={<Ach />} />
+          <Route path="/toparlar/ishlenildi" element={<Ishlenildi />} />
           <Route path="/toparlar/arhiwlenen" element={<Arhiwlenen />} />
         </Routes>
       </div>

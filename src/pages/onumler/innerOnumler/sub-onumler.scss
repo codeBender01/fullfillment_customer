@@ -1,0 +1,31 @@
+.sub-onumler {
+  position: relative;
+  font-size: 12px;
+  line-height: 135%;
+  /* or 16px */
+  letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+  .sutunler {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    font-weight: 500;
+
+    cursor: pointer;
+    background-color: #f3f3f3;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .onum-chars {
+    padding: 0 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #no-mg {
+    margin: 0;
+  }
+}
