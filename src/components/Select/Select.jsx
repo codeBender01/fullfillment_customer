@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IconContext } from "react-icons";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import "./select.scss";
 
@@ -15,14 +16,20 @@ const Select = (props) => {
   return (
     <>
       {props.btn.items ? (
-        <div className="select">
+        <div className="select" id={props.id}>
           <div className="dropdown-header" onClick={toggleDropdown}>
             {selectedItem
               ? props.btn.items.find((item) => item.id === selectedItem).label
               : props.btn.text}
-            {isOpen ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}
+
+            <IconContext.Provider value={{ color: `${props.iconColor}` }}>
+              {isOpen ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}
+            </IconContext.Provider>
           </div>
-          <div className={`dropdown-body ${isOpen && "open"}`}>
+          <div
+            className={`dropdown-body ${isOpen && "open"}`}
+            id={props.bodyId}
+          >
             {props.btn.items.map((item) => (
               <div
                 className="dropdown-item"

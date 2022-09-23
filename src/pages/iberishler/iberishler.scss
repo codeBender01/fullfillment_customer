@@ -1,0 +1,77 @@
+.iberishler {
+  width: 80%;
+  height: 100vh;
+  .nested-page {
+    width: 100%;
+    height: 100%;
+    padding: 40px 0;
+    position: relative;
+    h1 {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 135%;
+      letter-spacing: 0.01em;
+      margin-left: 20px;
+      width: auto;
+    }
+    #small {
+      width: 45%;
+    }
+    #minuscule {
+      width: 25%;
+    }
+
+    #green-select {
+      background-color: #99da83;
+      color: #ffffff;
+      #body-green {
+        background-color: #99da83;
+      }
+    }
+    .select-btns {
+      display: flex;
+      justify-content: space-between;
+      width: 70%;
+      margin: 20px 0 20px 20px;
+    }
+
+    .line {
+      background-color: #bfbfbf;
+      height: 1px;
+      margin-top: 10px;
+    }
+
+    .filters {
+      width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 5px 0 5px 20px;
+      .title {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 135%;
+        letter-spacing: 0.01em;
+      }
+    }
+
+    .divider {
+      display: flex;
+      justify-content: space-between;
+      height: 70vh;
+      overflow-x: scroll !important;
+      .main {
+        border-right: 1px solid #bfbfbf;
+        width: 70%;
+      }
+
+      .add-data {
+        width: 30%;
+        display: none;
+      }
+      .add-data.open {
+        display: initial;
+      }
+    }
+  }
+}
