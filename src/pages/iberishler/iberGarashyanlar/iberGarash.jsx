@@ -2,9 +2,11 @@ import React from "react";
 import Select from "../../../components/Select/Select";
 import FilterSelect from "../../../components/FilterSelect/FilterSelect";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { IconContext } from "react-icons";
 import "./iber-garash.scss";
 import { FaCog } from "react-icons/fa";
+import DataTable from "../../../components/table/Table";
 
 const selectBtns = [
   {
@@ -251,17 +253,127 @@ const tHead = [
   },
 ];
 
+const forms = [
+  {
+    id: 1,
+    label: "Hyzmaty",
+
+    items: [
+      {
+        id: 1,
+        label: "option 1",
+      },
+      {
+        id: 2,
+        label: "option 2",
+      },
+      {
+        id: 3,
+        label: "option 3",
+      },
+    ],
+  },
+  {
+    id: 2,
+    label: "Bukjasy",
+    items: [
+      {
+        id: 1,
+        label: "option 1",
+      },
+      {
+        id: 2,
+        label: "option 2",
+      },
+      {
+        id: 3,
+        label: "option 3",
+      },
+    ],
+  },
+  {
+    id: 3,
+    label: "Tassyklama",
+    items: [
+      {
+        id: 1,
+        label: "option 1",
+      },
+      {
+        id: 2,
+        label: "option 2",
+      },
+      {
+        id: 3,
+        label: "option 3",
+      },
+    ],
+  },
+  {
+    id: 4,
+    label: "Ätiýaçlandyryş",
+    items: [
+      {
+        id: 1,
+        label: "option 1",
+      },
+      {
+        id: 2,
+        label: "option 2",
+      },
+      {
+        id: 3,
+        label: "option 3",
+      },
+    ],
+  },
+];
+
+const measures = ["(uz)", "(gi)", "(beý)"];
+
 class IberGarash extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isClicked: false,
     };
+
+    this.wrapperRef = React.createRef();
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.openOnclick = this.openOnclick.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
-  openOnclick() {
+  openOnclick(e) {
     this.setState(({ isClicked }) => ({
       isClicked: !isClicked,
     }));
+  }
+
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+
+  /**
+   * Alert if clicked on outside of element
+   */
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+      this.setState({ isClicked: false });
+    }
+  }
+
+  handleChange(e) {
+    console.log(`onChange fired with value: '${e.currentTarget.value}'`);
+  }
+
+  handleInput(e) {
+    console.log(`onInput fired with value: '${e.currentTarget.value}'`);
   }
   render() {
     return (
@@ -287,8 +399,7 @@ class IberGarash extends React.Component {
         </div>
         <div className="line"></div>
         <div className="divider">
-          <div className="main">
-            <table id="iber">
+          {/* <table id="iber">
               <thead>
                 <tr>
                   <th>
@@ -343,19 +454,133 @@ class IberGarash extends React.Component {
                   })}
                 </tr>
               </tbody>
-            </table>
+            </table> */}
+          <div className="main" ref={this.wrapperRef}>
+            <DataTable onClick={this.openOnclick} />
           </div>
-          <div className={`add-data ${this.state.isClicked && "open"}`}>
-            <div className="dukan">
-              <IconContext.Provider value={{ color: "#0FA568" }}>
-                <FaCog />
-              </IconContext.Provider>
-              <span>11111</span>
-              <div className="drop">
-                <span>Çap et</span>
-                <IconContext.Provider value={{ color: "#5681EF" }}>
-                  <IoMdArrowDropdown />
-                </IconContext.Provider>
+          <div className={`add-data `}>
+            <div className={`closed ${this.state.isClicked && "open"}`}>
+              <div className="flex">
+                <div className="sub-div">
+                  <IconContext.Provider value={{ color: "#0FA568" }}>
+                    <FaCog />
+                  </IconContext.Provider>
+                  <span>11111</span>
+                </div>
+                <div className="drop">
+                  <span>Çap et</span>
+                  <IconContext.Provider value={{ color: "#5681EF" }}>
+                    <IoMdArrowDropdown size={20} />
+                  </IconContext.Provider>
+                </div>
+              </div>
+              <div className="flex">
+                <div className="sub-div">
+                  <MdKeyboardArrowDown />
+                  <span>Eltip bermek</span>
+                </div>
+                <div className="drop">
+                  <span>Öňünden belläň</span>
+                  <IconContext.Provider value={{ color: "#5681EF" }}>
+                    <IoMdArrowDropdown size={20} />
+                  </IconContext.Provider>
+                </div>
+              </div>
+              <div className="forms">
+                <div className="talap">
+                  <span>Talap edilýär</span>
+                  <span className="italic">Görkezilmedi</span>
+                </div>
+                <form action="#">
+                  <div className="weight">
+                    <label htmlFor="weight">Agramy</label>
+                    <input
+                      type="number"
+                      onChange={this.handleChange}
+                      onInput={this.handleInput}
+                      id="weight"
+                      placeholder="0"
+                      className="number"
+                    />
+                    <span>(kg)</span>
+                    <input
+                      type="number"
+                      onChange={this.handleChange}
+                      onInput={this.handleInput}
+                      id="weight"
+                      placeholder="0"
+                      className="number"
+                    />
+                    <span>(g)</span>
+                  </div>
+                  {forms.map((form) => {
+                    return (
+                      <div className="form-select" key={form.id}>
+                        <label htmlFor="hyzmaty">{form.label}</label>
+                        <Select btn={form} id="form" />
+                      </div>
+                    );
+                  })}
+
+                  <div className="measure">
+                    <label htmlFor="measure">Ölçegi</label>
+                    <div className="flexer">
+                      {measures.map((m) => {
+                        return (
+                          <div className="nums" key={m}>
+                            <input
+                              type="number"
+                              onChange={this.handleChange}
+                              onInput={this.handleInput}
+                              id="measure"
+                              placeholder="0"
+                              className="number"
+                            />
+                            <span>{m}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {forms.slice(1, 3).map((form) => {
+                    return (
+                      <div className="form-select" key={form.id}>
+                        <label htmlFor="hyzmaty">{form.label}</label>
+                        <Select btn={form} id="form" />
+                      </div>
+                    );
+                  })}
+                </form>
+
+                <div className="harytlar info">
+                  <div className="title-harytlar title-common">
+                    <MdKeyboardArrowDown />
+                    <span>Harytlar</span>
+                  </div>
+
+                  <div className="line"></div>
+                  <div className="info-harytlar">Hiç zat ýok</div>
+                </div>
+                <div className="alyjy info">
+                  <div className="title-alyjy title-common">
+                    <MdKeyboardArrowDown />
+                    <span>Alyjy</span>
+                  </div>
+
+                  <div className="line"></div>
+
+                  <div className="ship">
+                    <div className="ship-title">
+                      <span>Gämi</span>
+                      <span className="blue">düzet</span>
+                    </div>
+
+                    {[...Array(4)].map((e, id) => {
+                      return <div key={id}>-------</div>;
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
