@@ -14,6 +14,7 @@ const Dushunjeler = lazy(() => import("./pages/dushunjeler/dushunjeler"));
 const Sargytlar = lazy(() => import("./pages/sargytlar/sargytlar"));
 const Onumler = lazy(() => import("./pages/onumler/onumler"));
 const Iberishler = lazy(() => import("./pages/iberishler/iberishler"));
+const Mushderiler = lazy(() => import("./pages/mushderiler/mushderiler"));
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/sargytlar/*" element={<Sargytlar />}></Route>
             <Route path="/onumler/*" element={<Onumler />}></Route>
             <Route path="/iberishler/*" element={<Iberishler />}></Route>
+            <Route path="/mushderiler/*" element={<Mushderiler />}></Route>
           </Routes>
         </div>
       </Router>

@@ -1,9 +1,7 @@
 import React from "react";
 import Select from "../../../../components/Select/Select";
 import FilterSelect from "../../../../components/FilterSelect/FilterSelect";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { IconContext } from "react-icons";
-import "./ishlenildi.scss";
+import DataTable from "../../../../components/table/Table";
 
 const selectBtns = [
   {
@@ -81,31 +79,41 @@ const filterBtns = [
   },
 ];
 
-const tData = [
+const columns = [
+  { field: "groupName", headerName: "Toparyň ady", width: 100 },
+  { field: "sendings", headerName: "# Ibermeler", width: 100 },
+  { field: "created", headerName: "Döredildi", width: 100 },
+  { field: "marked", headerName: "Bellendi", width: 100, sortable: false },
   {
-    id: "td-1",
-    value: 11111,
-    className: "blue",
+    field: "cost",
+    headerName: "Iberişleriň bahasy",
+    width: 100,
+    sortable: false,
   },
   {
-    id: "td-2",
-    value: "000",
+    field: "printedOutContainers",
+    headerName: "# Çap edilen gaplar",
+    width: 100,
+    sortable: false,
   },
   {
-    id: "td-3",
-    value: "11/11/2022",
+    field: "printedOutDate",
+    headerName: "Çap edilen senesi",
+    width: 100,
+    sortable: false,
   },
+];
+
+const rows = [
   {
-    id: "td-4",
-    value: "Lorem ipsum",
-  },
-  {
-    id: "td-5",
-    value: "$0.00",
-  },
-  {
-    id: "td-6",
-    value: "000",
+    id: 1,
+    groupName: "Lorem ipsum",
+    sendings: "000",
+    created: "11/11/2022",
+    marked: "Lorem ipsum",
+    cost: "$0.00",
+    printedOutContainers: "000",
+    printedOutDate: null,
   },
 ];
 
@@ -127,97 +135,7 @@ class Ishlenildi extends React.Component {
           })}
         </div>
         <div className="line"></div>
-        <table id="ishlenildi">
-          <colgroup>
-            {[...Array(4)].map(() => {
-              return (
-                <col
-                  span="1"
-                  style={{
-                    width: "10%",
-                  }}
-                />
-              );
-            })}
-
-            <col
-              span="1"
-              style={{
-                width: "15%",
-              }}
-            />
-            <col
-              span="1"
-              style={{
-                width: "15%",
-              }}
-            />
-          </colgroup>
-          <thead>
-            <tr>
-              <th>
-                <div className="flexing">
-                  <span>Toparyň ady</span>
-                  <IconContext.Provider
-                    value={{
-                      color: "#ADADAD",
-                    }}
-                  >
-                    <IoMdArrowDropdown size={20} />
-                  </IconContext.Provider>
-                </div>
-              </th>
-              <th>
-                <div className="flexing">
-                  <span># Ibermeler</span>
-                  <IconContext.Provider
-                    value={{
-                      color: "#ADADAD",
-                    }}
-                  >
-                    <IoMdArrowDropdown size={20} />
-                  </IconContext.Provider>
-                </div>
-              </th>
-              <th>
-                <div className="flexing">
-                  <span>Döredildi</span>
-                  <IconContext.Provider
-                    value={{
-                      color: "#ADADAD",
-                    }}
-                  >
-                    <IoMdArrowDropdown size={20} />
-                  </IconContext.Provider>
-                </div>
-              </th>
-              <th>
-                <span>Bellendi</span>
-              </th>
-              <th>
-                <span>Iberişleriň bahasy</span>
-              </th>
-              <th>
-                <span># Çap edilen gaplar</span>
-              </th>
-              <th>
-                <span>Çap edilen senesi</span>
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              {tData.map((td) => {
-                return (
-                  <td key={td.id} className={td.className}>
-                    {td.value}
-                  </td>
-                );
-              })}
-            </tr>
-          </tbody>
-        </table>
+        <DataTable headerColor="#CBDAFF" rows={rows} columns={columns} />
       </div>
     );
   }

@@ -8,6 +8,57 @@ import "./iber-garash.scss";
 import { FaCog } from "react-icons/fa";
 import DataTable from "../../../components/table/Table";
 
+const columns = [
+  { field: "id", headerName: "Dükan#", width: 100 },
+  { field: "age", headerName: "Ýaş", width: 100 },
+  { field: "date", headerName: "Sargyt senesi", width: 100 },
+  { field: "sowgat", headerName: "Sowgat", width: 100 },
+  { field: "sku", headerName: "SKU elementi", width: 100 },
+  {
+    field: "productName",
+    headerName: "Harydyň ady",
+    width: 100,
+  },
+  {
+    field: "topar",
+    headerName: "Topar",
+    description: "This column has a value getter and is not sortable.",
+    sortable: false,
+    width: 100,
+  },
+
+  {
+    field: "alyjy",
+    headerName: "Alyjy",
+    width: 100,
+  },
+  {
+    field: "mukdary",
+    headerName: "Mukdary",
+    width: 100,
+  },
+  {
+    field: "jemiSargyt",
+    headerName: "Jemi sargyt",
+    width: 500,
+  },
+];
+
+const rows = [
+  {
+    id: 11111,
+    age: "99 sagat",
+    date: "11/11/2022",
+    sowgat: null,
+    sku: null,
+    productName: null,
+    topar: null,
+    alyjy: "Ady",
+    mukdary: "9999",
+    jemiSargyt: "999999999$",
+  },
+];
+
 const selectBtns = [
   {
     id: 1,
@@ -172,87 +223,6 @@ const greenSelect = {
   ],
 };
 
-const tData = [
-  {
-    id: "td-1",
-    value: 11111,
-    className: "blue",
-    checkbox: true,
-  },
-  {
-    id: "td-2",
-    value: "99 sagat",
-  },
-  {
-    id: "td-3",
-    value: "11/11/2022",
-  },
-  {
-    id: "td-4",
-  },
-  {
-    id: "td-5",
-  },
-  {
-    id: "td-6",
-  },
-  {
-    id: "td-7",
-  },
-  {
-    id: "td-8",
-    value: "Ady",
-  },
-  {
-    id: "td-9",
-    value: "9999",
-  },
-  {
-    id: "td-10",
-    value: "999",
-  },
-];
-
-const tHead = [
-  {
-    id: "th-1",
-    text: "Ýaş",
-  },
-  {
-    id: "th-2",
-    text: "Sargyt senesi",
-  },
-  {
-    id: "th-3",
-    text: "Sowgat",
-  },
-  {
-    id: "th-4",
-    text: "SKU elementi",
-  },
-  {
-    id: "th-5",
-    text: "Harydyň ady",
-  },
-  {
-    id: "th-6",
-    text: "Topar",
-    isDrop: false,
-  },
-  {
-    id: "th-7",
-    text: "Alyjy",
-  },
-  {
-    id: "th-8",
-    text: "Mukdary",
-  },
-  {
-    id: "th-9",
-    text: "Jemi sargyt",
-  },
-];
-
 const forms = [
   {
     id: 1,
@@ -338,12 +308,9 @@ class IberGarash extends React.Component {
       isClicked: false,
     };
 
-    this.wrapperRef = React.createRef();
-
     this.handleChange = this.handleChange.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.openOnclick = this.openOnclick.bind(this);
-    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
   openOnclick(e) {
     this.setState(({ isClicked }) => ({
@@ -362,11 +329,6 @@ class IberGarash extends React.Component {
   /**
    * Alert if clicked on outside of element
    */
-  handleClickOutside(event) {
-    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
-      this.setState({ isClicked: false });
-    }
-  }
 
   handleChange(e) {
     console.log(`onChange fired with value: '${e.currentTarget.value}'`);
@@ -399,64 +361,14 @@ class IberGarash extends React.Component {
         </div>
         <div className="line"></div>
         <div className="divider">
-          {/* <table id="iber">
-              <thead>
-                <tr>
-                  <th>
-                    <div className="flexing">
-                      <label htmlFor="dukan"></label>
-                      <input type="checkbox" id="dukan" />
-                      <span>Dükan#</span>
-                      <IconContext.Provider
-                        value={{
-                          color: "#ADADAD",
-                        }}
-                      >
-                        <IoMdArrowDropdown size={20} />
-                      </IconContext.Provider>
-                    </div>
-                  </th>
-                  {tHead.map((th) => {
-                    return (
-                      <th key={th.id}>
-                        <div className="flexing">
-                          <span>{th.text}</span>
-                          {th.isDrop === false ? null : (
-                            <IconContext.Provider
-                              value={{
-                                color: "#ADADAD",
-                              }}
-                            >
-                              <IoMdArrowDropdown size={20} />
-                            </IconContext.Provider>
-                          )}
-                        </div>
-                      </th>
-                    );
-                  })}
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr onClick={this.openOnclick.bind(this)}>
-                  {tData.map((td) => {
-                    return (
-                      <td key={td.id} className={td.className}>
-                        {td.checkbox ? (
-                          <div>
-                            <label htmlFor="dukan"></label>
-                            <input type="checkbox" id="dukan" />
-                          </div>
-                        ) : null}
-                        {td.value}
-                      </td>
-                    );
-                  })}
-                </tr>
-              </tbody>
-            </table> */}
-          <div className="main" ref={this.wrapperRef}>
-            <DataTable onClick={this.openOnclick} />
+          <div className="main">
+            <DataTable
+              onClick={this.openOnclick}
+              rows={rows}
+              columns={columns}
+              checkbox={true}
+              headerColor="#f2f2f2"
+            />
           </div>
           <div className={`add-data `}>
             <div className={`closed ${this.state.isClicked && "open"}`}>

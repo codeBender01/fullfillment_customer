@@ -14,15 +14,11 @@ const nav = [
     id: 1,
     name: "Bortda",
     path: "/bortda",
-    hasPath: false,
-    internalPath: false,
   },
   {
     id: 2,
     name: "Düşünjeler",
     path: "/dushunjeler",
-    hasPath: true,
-    internalPath: true,
 
     sidebar: {
       titles: [
@@ -68,8 +64,6 @@ const nav = [
     id: 3,
     name: "Sargytlar",
     path: "/sargytlar",
-    hasPath: false,
-    internalPath: false,
 
     sidebar: {
       titles: [
@@ -254,8 +248,6 @@ const nav = [
     id: 5,
     name: "Önümler",
     path: "/onumler",
-    hasPath: true,
-    internalPath: true,
 
     sidebar: {
       titles: [
@@ -286,8 +278,16 @@ const nav = [
     id: 6,
     name: "Müşderiler",
     path: "/mushderiler",
-    hasPath: false,
-    internalPath: false,
+
+    sidebar: {
+      titles: [
+        {
+          id: 1,
+          text: "Müşderiler",
+          path: "/mushderiler/ahlimushderiler",
+        },
+      ],
+    },
   },
 ];
 
