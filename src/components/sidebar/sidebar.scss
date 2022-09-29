@@ -6,9 +6,11 @@
   padding: 20px 0;
   overflow-x: hidden;
   .search-field {
-    margin-left: 10px;
+    // margin-left: 10px;
     width: 100%;
-    margin-bottom: 20px;
+    padding-bottom: 30px;
+    padding-left: 10px;
+    border-bottom: 1px solid #767676;
     .gozleg {
       display: table;
       font-weight: 600;

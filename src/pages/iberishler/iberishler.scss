@@ -59,7 +59,7 @@
       display: flex;
       justify-content: space-between;
       height: 70vh;
-      overflow-x: scroll !important;
+      overflow: hidden;
       .main {
         border-right: 1px solid #bfbfbf;
         width: 70%;
@@ -67,11 +67,40 @@
 
       .add-data {
         width: 30%;
-        display: none;
-      }
-      .add-data.open {
-        display: initial;
+        position: relative;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        .closed {
+          position: absolute;
+          display: none;
+          width: 100%;
+        }
+        .closed.open {
+          display: initial;
+          position: absolute;
+          animation: slide linear 0.6s;
+        }
       }
     }
+  }
+}
+
+@keyframes slide {
+  0% {
+    right: -300px;
+  }
+
+  25% {
+    right: -150px;
+  }
+  50% {
+    right: -75px;
+  }
+  75% {
+    right: -35px;
+  }
+
+  100% {
+    right: 0px;
   }
 }

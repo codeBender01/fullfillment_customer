@@ -1,5 +1,6 @@
 import React from "react";
 import Select from "../../../components/Select/Select";
+import DataTable from "../../../components/table/Table";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IconContext } from "react-icons";
 import "./hasabat.scss";
@@ -8,6 +9,21 @@ const selectBtns = [
   {
     id: 1,
     text: "Hasabat kategoriýasyny goş",
+  },
+];
+
+const columns = [
+  { field: "name", headerName: "Ady", width: 100 },
+  { field: "products", headerName: "# Önümer", width: 100 },
+  { field: "actions", headerName: "Hereketler", width: 100 },
+];
+
+const rows = [
+  {
+    id: 1,
+    name: "Lorem ipsum",
+    products: 0,
+    actions: "Düzet  Aýyr",
   },
 ];
 
@@ -22,64 +38,7 @@ class Hasabat extends React.Component {
           })}
         </div>
 
-        <table id="hasabat">
-          <colgroup>
-            <col
-              span="1"
-              style={{
-                width: "15%",
-              }}
-            />
-            <col
-              span="1"
-              style={{
-                width: "15%",
-              }}
-            />
-            <col
-              span="1"
-              style={{
-                width: "70%",
-              }}
-            />
-          </colgroup>
-          <thead>
-            <tr>
-              <th>
-                <div className="flexing">
-                  <span>Ady</span>
-                  <IoMdArrowDropdown size={20} />
-                </div>
-              </th>
-              <th>
-                <div className="flexing">
-                  <span># Önümler</span>
-                  <IconContext.Provider
-                    value={{
-                      color: "#ADADAD",
-                    }}
-                  >
-                    <IoMdArrowDropdown size={20} />
-                  </IconContext.Provider>
-                </div>
-              </th>
-              <th>
-                <span>Hereketler</span>
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>Lorem ipsum</td>
-              <td>0</td>
-              <td>
-                <button>Düzet</button>
-                <button>Aýyr</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <DataTable headerColor="#CBDAFF" rows={rows} columns={columns} />
       </div>
     );
   }
