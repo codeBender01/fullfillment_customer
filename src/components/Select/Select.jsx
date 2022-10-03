@@ -43,7 +43,9 @@ const Select = (props) => {
           </div>
         </div>
       ) : (
-        <div className="option">{props.btn.text}</div>
+        <div className="option" onClick={props.onClick}>
+          {props.btn.text}
+        </div>
       )}
     </>
   );

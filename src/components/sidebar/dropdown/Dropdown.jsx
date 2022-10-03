@@ -6,7 +6,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import "./dropdown.scss";
 
 function Dropdown(props) {
-  const { selectedDrop, setSelectedDrop } = props;
+  const { setSelectedDrop } = props;
   const { isActive, onClick } = props;
   const location = useLocation();
 
@@ -21,7 +21,7 @@ function Dropdown(props) {
         setSelectedDrop(props.title.id);
       }
     }
-  }, [location.pathname, props.title.id, props.title.path]);
+  }, [location.pathname, props.title.id, props.title.path, setSelectedDrop]);
 
   return (
     <div className="dropdown">
