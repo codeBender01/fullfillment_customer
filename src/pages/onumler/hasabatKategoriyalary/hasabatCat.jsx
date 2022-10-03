@@ -1,8 +1,7 @@
 import React from "react";
 import Select from "../../../components/Select/Select";
 import DataTable from "../../../components/table/Table";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { IconContext } from "react-icons";
+
 import "./hasabat.scss";
 
 const selectBtns = [

@@ -1,6 +1,5 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { PropaneSharp } from "@mui/icons-material";
 
 export default function DataTable(props) {
   return (

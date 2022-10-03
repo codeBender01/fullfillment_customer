@@ -29,3 +29,74 @@
     margin: 0;
   }
 }
+.product-in-details {
+  .head {
+    background-color: #f2f5f9;
+    padding-top: 15px;
+    label {
+      display: table;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 135%;
+
+      letter-spacing: 0.01em;
+    }
+
+    form {
+      display: flex;
+      justify-content: center;
+      input {
+        border: 0.5px solid #000000;
+        border-radius: 5px;
+        width: 100%;
+        font-size: 14px;
+        height: 45px;
+        padding: 5px;
+      }
+
+      input[type="checkbox"] {
+        height: initial;
+        margin: 5px;
+      }
+
+      #check {
+        display: initial;
+        white-space: nowrap;
+        font-size: 10px;
+      }
+
+      div {
+        margin: 0 15px;
+        width: 40%;
+        .checkbox {
+          display: flex;
+          height: auto;
+          align-items: center;
+          margin: 0;
+          width: 20%;
+        }
+      }
+    }
+  }
+
+  .nav {
+    display: flex;
+    padding-left: 120px;
+    padding-top: 20px;
+    list-style: none;
+    background-color: #f2f5f9;
+    li {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 135%;
+      letter-spacing: 0.01em;
+      margin-right: 10px;
+    }
+    li.active {
+      background-color: #ffffff;
+      border: 1px solid #767676;
+      border-bottom: none;
+      padding: 0 5px;
+    }
+  }
+}
