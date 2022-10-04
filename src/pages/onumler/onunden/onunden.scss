@@ -1,5 +1,14 @@
-.eltip-bermek {
+.onunden-modal {
   padding: 20px 100px;
+  .group-name {
+    label {
+      display: table;
+    }
+    input {
+      width: 60%;
+      margin-top: 10px;
+    }
+  }
 
   .selects {
     display: flex;
@@ -59,21 +68,25 @@
 
     .address-input {
       width: 40%;
-      input {
-        width: 100%;
-        outline: none;
-        border: 0.5px solid #000000;
-        border-radius: 5px;
-        height: 45px;
-        font-weight: 400;
-        font-size: 14px;
-        padding: 5px;
-      }
     }
 
     label {
       display: table;
       margin-bottom: 10px;
     }
+  }
+
+  #mg {
+    margin-bottom: 120px;
+  }
+  input {
+    width: 100%;
+    outline: none;
+    border: 0.5px solid #000000;
+    border-radius: 5px;
+    height: 35px;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 5px;
   }
 }

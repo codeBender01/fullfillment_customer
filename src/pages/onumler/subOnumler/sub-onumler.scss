@@ -56,13 +56,14 @@
 
       input[type="checkbox"] {
         height: initial;
-        margin: 5px;
+        margin-top: 10px;
       }
 
       #check {
         display: initial;
         white-space: nowrap;
         font-size: 10px;
+        margin-top: 10px;
       }
 
       div {
@@ -91,6 +92,7 @@
       line-height: 135%;
       letter-spacing: 0.01em;
       margin-right: 10px;
+      cursor: pointer;
     }
     li.active {
       background-color: #ffffff;
@@ -98,5 +100,10 @@
       border-bottom: none;
       padding: 0 5px;
     }
+  }
+
+  .modal-title {
+    border-bottom: 0.5px solid #767676;
+    padding-bottom: 15px;
   }
 }
