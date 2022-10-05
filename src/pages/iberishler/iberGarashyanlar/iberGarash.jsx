@@ -318,25 +318,6 @@ class IberGarash extends React.Component {
     }));
   }
 
-  componentDidMount() {
-    document.addEventListener("mousedown", this.handleClickOutside);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClickOutside);
-  }
-
-  /**
-   * Alert if clicked on outside of element
-   */
-
-  handleChange(e) {
-    console.log(`onChange fired with value: '${e.currentTarget.value}'`);
-  }
-
-  handleInput(e) {
-    console.log(`onInput fired with value: '${e.currentTarget.value}'`);
-  }
   render() {
     return (
       <div className="nested-page iber-garash">
@@ -442,8 +423,6 @@ class IberGarash extends React.Component {
                           <div className="nums" key={m}>
                             <input
                               type="number"
-                              onChange={this.handleChange}
-                              onInput={this.handleInput}
                               id="measure"
                               placeholder="0"
                               className="number"

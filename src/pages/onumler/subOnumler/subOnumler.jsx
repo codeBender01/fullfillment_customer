@@ -7,6 +7,8 @@ import { IconContext } from "react-icons";
 import EndButtons from "../../../components/EndButtons/EndButtons";
 import "./sub-onumler.scss";
 import "./general.scss";
+import "./eltip-bermek.scss";
+import "./lakamlar.scss";
 
 const selectBtns = [
   {
@@ -210,28 +212,162 @@ const eltipBermekSelects = [
   {
     id: 1,
     text: "Içerki hyzmat",
+    items: [
+      {
+        id: 1,
+        label: "option 1",
+      },
+      {
+        id: 2,
+        label: "option 2",
+      },
+      {
+        id: 3,
+        label: "option 3",
+      },
+    ],
   },
   {
     id: 2,
     text: "Bukjasy",
+    items: [
+      {
+        id: 1,
+        label: "option 1",
+      },
+      {
+        id: 2,
+        label: "option 2",
+      },
+      {
+        id: 3,
+        label: "option 3",
+      },
+    ],
   },
   {
     id: 3,
     text: "Tassyklama ýok",
+    items: [
+      {
+        id: 1,
+        label: "option 1",
+      },
+      {
+        id: 2,
+        label: "option 2",
+      },
+      {
+        id: 3,
+        label: "option 3",
+      },
+    ],
   },
   {
     id: 4,
     text: "Halkara hyzmat",
+    items: [
+      {
+        id: 1,
+        label: "option 1",
+      },
+      {
+        id: 2,
+        label: "option 2",
+      },
+      {
+        id: 3,
+        label: "option 3",
+      },
+    ],
   },
   {
     id: 5,
     text: "Bukjasy",
+    items: [
+      {
+        id: 1,
+        label: "option 1",
+      },
+      {
+        id: 2,
+        label: "option 2",
+      },
+      {
+        id: 3,
+        label: "option 3",
+      },
+    ],
   },
   {
     id: 6,
     text: "Tassyklama ýok",
+    items: [
+      {
+        id: 1,
+        label: "option 1",
+      },
+      {
+        id: 2,
+        label: "option 2",
+      },
+      {
+        id: 3,
+        label: "option 3",
+      },
+    ],
   },
 ];
+
+const eltipBermekMeasures = [
+  {
+    id: 1,
+    labelOfNums: "Bukjanyň agramy",
+    labelOfInput: "Ammaryň ýerleşýän ýeri",
+    measures: [
+      {
+        measureText: "(kg)",
+      },
+      {
+        measureText: "(g)",
+      },
+    ],
+  },
+  {
+    id: 2,
+    labelOfNums: "Bukjanyň ölçegleri",
+    labelOfInput: "Ammaryň ýerleşýän ýeri",
+    measures: [
+      {
+        measureText: "(uz)",
+      },
+      {
+        measureText: "(gi)",
+      },
+      {
+        measureText: "(beý)",
+      },
+    ],
+  },
+];
+
+const dukanSelect = {
+  text: "Tassyklama ýok",
+  items: [
+    {
+      id: 1,
+      label: "option 1",
+    },
+    {
+      id: 2,
+      label: "option 2",
+    },
+    {
+      id: 3,
+      label: "option 3",
+    },
+  ],
+};
 
 function General() {
   const [textAreaValue, setTextAreaValue] = useState("");
@@ -240,7 +376,7 @@ function General() {
   };
   return (
     <div className="general">
-      <div className="attrs">Atributlary</div>
+      <div className="modal-title">Atributlary</div>
 
       <div className="forms">
         <form action="#" id="textimg">
@@ -291,12 +427,65 @@ function EltipBermek() {
   return (
     <div className="eltip-bermek">
       <div className="modal-title">Eltip bermek</div>
+      <div className="selects">
+        {eltipBermekSelects.map((el) => {
+          return <Select id="elsel" key={el.id} btn={el} />;
+        })}
+      </div>
+
+      {eltipBermekMeasures.map((me) => {
+        return (
+          <div className="measure" key={me.id}>
+            <div className="nums">
+              <span className="label">{me.labelOfNums}</span>
+              {me.measures.map((n) => {
+                return (
+                  <div className="num">
+                    <input
+                      type="number"
+                      id="measure"
+                      placeholder="0"
+                      className="number"
+                    />
+                    <span>{n.measureText}</span>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="address-input">
+              <label htmlFor="storage-address">{me.labelOfInput}</label>
+              <input type="text" id="storage-address" />
+            </div>
+          </div>
+        );
+      })}
+      <EndButtons />
     </div>
   );
 }
 
-function Third() {
-  return <div>imthird</div>;
+function Lakamlar() {
+  return (
+    <div className="lakamlar">
+      <div className="modal-title">Lakamlary saklaň</div>
+      <div className="lakam-inputs">
+        <div className="sku">
+          <label htmlFor="sku-lakam">SKU</label>
+          <input type="text" id="sku-lakam" />
+        </div>
+        <div className="dukan">
+          <span>Dükan</span>
+          <Select btn={dukanSelect} id="nicksel" />
+        </div>
+      </div>
+
+      <div className="btn">
+        <button>Lakam goşuň</button>
+      </div>
+
+      <EndButtons />
+    </div>
+  );
 }
 
 const navs = [
@@ -313,7 +502,6 @@ const navs = [
   {
     id: 3,
     text: "Gümrük",
-    component: <Third />,
   },
   {
     id: 4,
@@ -322,6 +510,7 @@ const navs = [
   {
     id: 5,
     text: "Lakamlary saklaň",
+    component: <Lakamlar />,
   },
   {
     id: 6,
