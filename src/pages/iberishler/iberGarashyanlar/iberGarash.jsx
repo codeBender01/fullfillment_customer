@@ -308,8 +308,6 @@ class IberGarash extends React.Component {
       isClicked: false,
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleInput = this.handleInput.bind(this);
     this.openOnclick = this.openOnclick.bind(this);
   }
   openOnclick(e) {

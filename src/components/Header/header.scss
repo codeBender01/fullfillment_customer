@@ -16,8 +16,13 @@
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 10px 0;
+  }
+
+  a {
+    height: 20px;
   }
 
   .logo {
@@ -33,7 +38,6 @@
     align-items: center;
     list-style: none;
     padding: 0;
-    margin-left: 180px;
     li {
       margin: 0 15px;
       cursor: pointer;

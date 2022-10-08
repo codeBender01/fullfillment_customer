@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dropdown from "./dropdown/Dropdown";
 import { AiOutlineSearch } from "react-icons/ai";
 import { IconContext } from "react-icons";
@@ -48,10 +48,24 @@ function Sidebar() {
   const sideNav = sendCurrentSidebar();
 
   const [selectedDrop, setSelectedDrop] = useState(null);
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    if (location.pathname === "/login") {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  }, [isLogin, location.pathname]);
 
   return (
     <StickyBox offsetTop={20} offsetBottom={20}>
-      <div className="sidebar">
+      <div
+        className="sidebar"
+        style={{
+          display: isLogin ? "none" : null,
+        }}
+      >
         <div className="search-field">
           <div className="input">
             <input type="text" />
