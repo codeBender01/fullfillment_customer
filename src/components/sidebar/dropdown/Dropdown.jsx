@@ -21,7 +21,7 @@ function Dropdown(props) {
         setSelectedDrop(props.title.id);
       }
     }
-  }, [location.pathname, props.title.id, props.title.path, setSelectedDrop]);
+  }, []);
 
   return (
     <div className="dropdown">
@@ -30,7 +30,7 @@ function Dropdown(props) {
         onClick={onClick}
       >
         {props.title.path ? (
-          <NavLink to={props.title.path}>
+          <NavLink end to={props.title.path}>
             <div className="title">
               {props.title.isIcon ? (
                 isActive ? (
@@ -59,7 +59,7 @@ function Dropdown(props) {
         {props.title.subMenu
           ? props.title.subMenu.map((menuItem) => {
               return (
-                <NavLink to={menuItem.path} key={menuItem.id}>
+                <NavLink end to={menuItem.path} key={menuItem.id}>
                   <ul className={`menu `} onClick={menuStandStill}>
                     <li className="menu-item">
                       <IconContext.Provider

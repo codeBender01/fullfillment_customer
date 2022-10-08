@@ -9,12 +9,15 @@ import {
   Navigate,
 } from "react-router-dom";
 
+import Iberishler from "./pages/iberishler/iberishler";
+
 const Bortda = lazy(() => import("./pages/bortda/bortda"));
 const Dushunjeler = lazy(() => import("./pages/dushunjeler/dushunjeler"));
 const Sargytlar = lazy(() => import("./pages/sargytlar/sargytlar"));
 const Onumler = lazy(() => import("./pages/onumler/onumler"));
-const Iberishler = lazy(() => import("./pages/iberishler/iberishler"));
+// const Iberishler = lazy(() => import("./pages/iberishler/iberishler"));
 const Mushderiler = lazy(() => import("./pages/mushderiler/mushderiler"));
+const Login = lazy(() => import("./pages/login/login"));
 
 function App() {
   return (
@@ -31,6 +34,7 @@ function App() {
             <Route path="/onumler/*" element={<Onumler />}></Route>
             <Route path="/iberishler/*" element={<Iberishler />}></Route>
             <Route path="/mushderiler/*" element={<Mushderiler />}></Route>
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </Router>
