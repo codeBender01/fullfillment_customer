@@ -41,7 +41,7 @@ function Header() {
       }
     }
 
-    if (location.pathname === "/login") {
+    if (location.pathname === "/login" || location.pathname === "/signup") {
       setIsLogin(true);
     } else {
       setIsLogin(false);
