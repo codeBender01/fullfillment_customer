@@ -1,0 +1,124 @@
+.sign-up {
+  padding: 65px 90px;
+  width: 100%;
+  display: flex;
+
+  .logo {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: left;
+  }
+
+  .form {
+    margin-left: 300px;
+    .go-back {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      line-height: 19px;
+      color: #8692a6;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    .inputs {
+      margin: 50px 40px;
+      .text {
+        margin-bottom: 20px;
+        div {
+          font-weight: 700;
+          font-size: 30px;
+          line-height: 36px;
+        }
+        p {
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 28px;
+          color: #8692a6;
+          width: 80%;
+          margin-top: 10px;
+        }
+      }
+
+      form {
+        .spacer {
+          margin-bottom: 15px;
+        }
+        label {
+          font-weight: 500;
+          display: table;
+          color: #696f79;
+        }
+        .error {
+          color: #da7676;
+          transition: all 0.3s;
+        }
+
+        .error-input {
+          border: 1px solid #da7676;
+        }
+
+        .error-message {
+          text-align: right;
+          width: 60%;
+        }
+
+        .formik-input {
+          outline: none;
+          padding: 8px 10px;
+          width: 80%;
+          font-size: 16px;
+          margin-top: 10px;
+          border: 1px solid #8692a6;
+          border-radius: 6px;
+        }
+
+        .submit {
+          width: 80%;
+          background-color: #fbb065b2;
+          border: none;
+          border-radius: 5px;
+          color: #ffffff;
+          font-size: 16px;
+          padding: 10px 0;
+          cursor: pointer;
+          transition: all 0.2s;
+          margin-top: 25px;
+
+          &:hover {
+            opacity: 0.9;
+          }
+        }
+        .sign-select {
+          margin-top: 0;
+          #gender-select {
+            width: 80%;
+            background-color: transparent;
+            border: 1px solid #8692a6;
+            border-radius: 6px;
+            padding: 2px 4px;
+
+            .dropdown-body.open {
+              width: 180px;
+            }
+            .dropdown-header {
+              margin: 0;
+            }
+          }
+        }
+        label {
+          margin-bottom: 10px;
+        }
+
+        .sign-date {
+          width: 80%;
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+}

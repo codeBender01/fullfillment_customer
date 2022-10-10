@@ -51,7 +51,7 @@ function Sidebar() {
   const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
-    if (location.pathname === "/login") {
+    if (location.pathname === "/login" || location.pathname === "/signup") {
       setIsLogin(true);
     } else {
       setIsLogin(false);

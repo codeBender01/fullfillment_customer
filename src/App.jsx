@@ -18,6 +18,7 @@ const Onumler = lazy(() => import("./pages/onumler/onumler"));
 // const Iberishler = lazy(() => import("./pages/iberishler/iberishler"));
 const Mushderiler = lazy(() => import("./pages/mushderiler/mushderiler"));
 const Login = lazy(() => import("./pages/login/login"));
+const SignUp = lazy(() => import("./pages/signup/signup"));
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/iberishler/*" element={<Iberishler />}></Route>
             <Route path="/mushderiler/*" element={<Mushderiler />}></Route>
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
           </Routes>
         </div>
       </Router>
