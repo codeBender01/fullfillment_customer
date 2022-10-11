@@ -33,7 +33,6 @@
     display: none;
     transition: opacity 1s ease-out;
     opacity: 0;
-    padding: 10px 15px;
     background-color: #e4e4e4;
     cursor: pointer;
     .menu-item {
@@ -41,7 +40,9 @@
       cursor: pointer;
       display: flex;
       align-items: center;
+      padding: 10px 15px;
 
+      min-height: 100%;
       span {
         margin-left: 2px;
         font-weight: 400;
@@ -78,6 +79,7 @@
     // }
     .menu {
       display: block;
+      height: auto;
       opacity: 1;
     }
   }

@@ -120,7 +120,7 @@ const Login = () => {
             <button type="submit">Registrasiýa et</button>
           </form>
 
-          <div className="sign-up">
+          <div className="sign-up-link">
             Hasabyňyz ýokmy?
             <NavLink to="/signup">Şu ýere ýazylyň</NavLink>
           </div>
