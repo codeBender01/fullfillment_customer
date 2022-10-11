@@ -106,10 +106,11 @@
         }
       }
 
-      .sign-up {
+      .sign-up-link {
         text-align: center;
-        margin-top: 15px;
         width: 60%;
+        // white-space: nowrap;
+        margin-top: 15px;
       }
 
       a {

@@ -1,18 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import { IconContext } from "react-icons";
 import { NavLink, useLocation } from "react-router-dom";
 
 import "./dropdown.scss";
+import { LocationCity } from "@mui/icons-material";
 
 function Dropdown(props) {
   const { setSelectedDrop } = props;
   const { isActive, onClick } = props;
+  const [selectedSubMenuItem, setSelectedSub] = useState(null);
   const location = useLocation();
 
   function menuStandStill(event) {
     event.stopPropagation();
-    event.currentTarget.classList.toggle("white-bg");
   }
 
   useEffect(() => {
@@ -20,8 +21,15 @@ function Dropdown(props) {
       if (location.pathname === props.title.path) {
         setSelectedDrop(props.title.id);
       }
+
+      for (let subMenuItem of props.title.subMenu) {
+        if (location.pathname === subMenuItem.path) {
+          setSelectedSub(subMenuItem.id);
+          console.log("hey man", selectedSubMenuItem);
+        }
+      }
     }
-  }, []);
+  });
 
   return (
     <div className="dropdown">
@@ -59,9 +67,24 @@ function Dropdown(props) {
         {props.title.subMenu
           ? props.title.subMenu.map((menuItem) => {
               return (
-                <NavLink end to={menuItem.path} key={menuItem.id}>
-                  <ul className={`menu `} onClick={menuStandStill}>
-                    <li className="menu-item">
+                <ul
+                  className={`menu `}
+                  onClick={menuStandStill}
+                  key={menuItem.id}
+                >
+                  <NavLink to={menuItem.path}>
+                    <li
+                      className={`menu-item ${
+                        menuItem.id === selectedSubMenuItem ? "white-bg" : null
+                      }`}
+                      onClick={() =>
+                        setSelectedSub(
+                          menuItem.id === selectedSubMenuItem
+                            ? null
+                            : menuItem.id
+                        )
+                      }
+                    >
                       <IconContext.Provider
                         value={{
                           color: `${menuItem.color ? menuItem.color : ""}`,
@@ -71,8 +94,8 @@ function Dropdown(props) {
                       </IconContext.Provider>
                       <span>{menuItem.text}</span>
                     </li>
-                  </ul>
-                </NavLink>
+                  </NavLink>
+                </ul>
               );
             })
           : null}
