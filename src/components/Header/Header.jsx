@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { IoMdPerson } from "react-icons/io";
+import { AiOutlineSearch } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import nav from "../../data/navData";
 import "./header.scss";
@@ -10,6 +11,7 @@ function Header() {
   const [isLogin, setIsLogin] = useState(false);
 
   const location = useLocation();
+  const placeholder = "gözleg";
 
   useEffect(() => {
     for (let n of nav) {
@@ -57,12 +59,12 @@ function Header() {
       return (
         <li key={link.id} onClick={() => applyActiveClass(link.id)}>
           <NavLink to={link.path}>
-            <span
-              className={link.id === selectedNavbarLink ? "color-yellow" : ""}
-            >
+            <span className={link.id === selectedNavbarLink ? "active" : ""}>
               {link.name}
             </span>
           </NavLink>
+
+          <span className={link.notificationClassName}>{link.messages}</span>
         </li>
       );
     });
@@ -77,12 +79,17 @@ function Header() {
         }}
       >
         <div className="container">
-          <div className="logo">Logo</div>
+          <div className="logo">LOGOTIP</div>
           <ul className="header-links">{renderedNavbarLinks()}</ul>
+
+          <div className="search-bar">
+            <AiOutlineSearch size={15} />
+            <input type="text" placeholder={placeholder} />
+          </div>
           <NavLink to="/login">
             <IconContext.Provider
               value={{
-                color: "#ffffff",
+                color: "#B2B2B2",
               }}
             >
               <IoMdPerson size={20} />

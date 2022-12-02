@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import { IconContext } from "react-icons";
 import { NavLink, useLocation } from "react-router-dom";
-
+import { BsDot } from "react-icons/bs";
 import "./dropdown.scss";
-import { LocationCity } from "@mui/icons-material";
 
 function Dropdown(props) {
   const { setSelectedDrop } = props;
@@ -22,10 +21,11 @@ function Dropdown(props) {
         setSelectedDrop(props.title.id);
       }
 
-      for (let subMenuItem of props.title.subMenu) {
-        if (location.pathname === subMenuItem.path) {
-          setSelectedSub(subMenuItem.id);
-          console.log("hey man", selectedSubMenuItem);
+      if (props.title.subMenu) {
+        for (let subMenuItem of props.title.subMenu) {
+          if (location.pathname === subMenuItem.path) {
+            setSelectedSub(subMenuItem.id);
+          }
         }
       }
     }
@@ -37,33 +37,23 @@ function Dropdown(props) {
         className={`sidebar-drop ${isActive ? "title-active" : ""}`}
         onClick={onClick}
       >
-        {props.title.path ? (
-          <NavLink end to={props.title.path}>
-            <div className="title">
-              {props.title.isIcon ? (
-                isActive ? (
-                  <IoIosArrowDown />
-                ) : (
-                  <IoIosArrowForward />
-                )
-              ) : null}
-
-              <h4>{props.title.text}</h4>
-            </div>
-          </NavLink>
-        ) : (
+        <NavLink to={`${props.title.path}`}>
           <div className="title">
-            {props.title.isIcon ? (
-              isActive ? (
-                <IoIosArrowDown />
-              ) : (
-                <IoIosArrowForward />
-              )
-            ) : null}
-
+            <IconContext.Provider
+              value={{
+                color: "#fff",
+              }}
+            >
+              <BsDot className="active-dot" size={20} />
+            </IconContext.Provider>
             <h4>{props.title.text}</h4>
+
+            {props.title.isIcon ? (
+              <IoIosArrowForward className="drop-icon" />
+            ) : null}
           </div>
-        )}
+        </NavLink>
+
         {props.title.subMenu
           ? props.title.subMenu.map((menuItem) => {
               return (
@@ -75,7 +65,9 @@ function Dropdown(props) {
                   <NavLink to={menuItem.path}>
                     <li
                       className={`menu-item ${
-                        menuItem.id === selectedSubMenuItem ? "white-bg" : null
+                        menuItem.id === selectedSubMenuItem
+                          ? "active-drop-link"
+                          : null
                       }`}
                       onClick={() =>
                         setSelectedSub(
