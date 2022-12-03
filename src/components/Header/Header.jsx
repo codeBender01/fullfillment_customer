@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { IoMdPerson } from "react-icons/io";
 import { AiOutlineSearch } from "react-icons/ai";
 import { IconContext } from "react-icons";
-import nav from "../../data/navData";
+import nav, { sidebar } from "../../data/navData";
 import "./header.scss";
 
 function Header() {
@@ -15,33 +15,21 @@ function Header() {
 
   useEffect(() => {
     for (let n of nav) {
-      if (n.sidebar) {
-        for (let title of n.sidebar.titles) {
-          if (
-            location.pathname === n.path ||
-            location.pathname === title.path
-          ) {
-            if (n.sidebar) {
-              setSelectedNavbarLink(n.id);
-            }
-          }
-
-          if (title.subMenu) {
-            for (let subMenu of title.subMenu) {
-              if (
-                location.pathname === n.path ||
-                location.pathname === title.path ||
-                location.pathname === subMenu.path
-              ) {
-                if (n.sidebar) {
-                  setSelectedNavbarLink(n.id);
-                }
-              }
-            }
-          }
-        }
+      if (location.pathname === n.path) {
+        setSelectedNavbarLink(n.id);
       }
     }
+    for (let subMenu of sidebar[1].subMenu) {
+      if (location.pathname === subMenu.path) {
+        setSelectedNavbarLink(subMenu.id);
+      }
+    }
+
+    // for (let side of sidebar) {
+    //   if (location.pathname === side.path) {
+    //     setSelectedNavbarLink(side.id);
+    //   }
+    // }
 
     if (location.pathname === "/login" || location.pathname === "/signup") {
       setIsLogin(true);
