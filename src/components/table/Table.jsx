@@ -3,7 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 
 export default function DataTable(props) {
   return (
-    <div style={{ height: 500, width: "100%" }}>
+    <div style={{ height: 300, width: "100%" }}>
       <DataGrid
         rows={props.rows}
         columns={props.columns}
@@ -11,18 +11,37 @@ export default function DataTable(props) {
         rowsPerPageOptions={[5]}
         checkboxSelection={props.checkbox}
         onCellClick={props.onClick}
-        rowHeight={30}
-        headerHeight={30}
+        rowHeight={40}
+        headerHeight={40}
         sx={{
+          "& ": {
+            borderRadius: 0,
+            border: "none",
+          },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: `${props.headerColor}`,
-            color: "#000000",
-            fontSize: 12,
+            color: "#ffffff",
+            fontSize: 14,
+            borderRadius: 0,
           },
           "& .MuiDataGrid-virtualScrollerRenderZone": {
             "& .MuiDataGrid-row": {
-              fontSize: 12,
+              fontSize: 14,
             },
+          },
+
+          "& .MuiDataGrid-iconSeparator": {
+            display: "none",
+          },
+          "& .MuiDataGrid-sortIcon ": {
+            color: "#ffffff",
+          },
+          "& .css-ptiqhd-MuiSvgIcon-root ": {
+            color: "#ffffff",
+          },
+
+          "& .MuiDataGrid-footerContainer": {
+            display: "none",
           },
         }}
       />

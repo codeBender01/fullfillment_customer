@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 import { IconContext } from "react-icons";
 import { NavLink, useLocation } from "react-router-dom";
 import { BsDot } from "react-icons/bs";
+import nav from "../../../data/navData";
 import "./dropdown.scss";
 
 function Dropdown(props) {
@@ -20,13 +21,10 @@ function Dropdown(props) {
       if (location.pathname === props.title.path) {
         setSelectedDrop(props.title.id);
       }
-
-      if (props.title.subMenu) {
-        for (let subMenuItem of props.title.subMenu) {
-          if (location.pathname === subMenuItem.path) {
-            setSelectedSub(subMenuItem.id);
-          }
-        }
+    }
+    for (let n of nav) {
+      if (location.pathname === n.path) {
+        setSelectedSub(n.id);
       }
     }
   });
@@ -34,7 +32,7 @@ function Dropdown(props) {
   return (
     <div className="dropdown">
       <div
-        className={`sidebar-drop ${isActive ? "title-active" : ""}`}
+        className={`sidebar-drop ${isActive ? "title-active" : null}`}
         onClick={onClick}
       >
         <NavLink to={`${props.title.path}`}>

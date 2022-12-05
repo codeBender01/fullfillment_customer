@@ -3,30 +3,38 @@ import { NavLink } from "react-router-dom";
 import profilePic from "../../images/profilePic.png";
 import { BsDot } from "react-icons/bs";
 import { IconContext } from "react-icons";
+import DataTable from "../../components/table/Table";
+
 import "./dolandyrysh.scss";
 
-const salesTable = [
+const columns = [
+  { field: "name", headerName: "Aralyk", width: 150 },
+  { field: "total", headerName: "Möçberi", width: 100 },
+  { field: "quantity", headerName: "Sany", width: 100 },
+];
+
+const rows = [
   {
     id: "today",
-    text: "Şu günki satuwlar:",
+    name: "Şu günki satuwlar:",
     total: "2000 TMT",
     quantity: 12,
   },
   {
     id: "week",
-    text: "7 gün içinde:",
+    name: "7 gün içinde:",
     total: "2000 TMT",
     quantity: 88,
   },
   {
     id: "twoweeks",
-    text: "15 gün içinde:",
+    name: "15 gün içinde:",
     total: "4000 TMT",
     quantity: 88,
   },
   {
     id: "month",
-    text: "30 gün içinde:",
+    name: "30 gün içinde:",
     total: "4000 TMT",
     quantity: 88,
   },
@@ -48,7 +56,7 @@ function Dolandyrysh() {
             10/10/22
           </span>
         </div>
-        <table>
+        {/* <table>
           <thead>
             <th>Aralyk</th>
             <th>Möçberi</th>
@@ -65,7 +73,9 @@ function Dolandyrysh() {
               );
             })}
           </tbody>
-        </table>
+        </table> */}
+
+        <DataTable headerColor="#3C3C48" rows={rows} columns={columns} />
       </div>
 
       <div className="payment-info">

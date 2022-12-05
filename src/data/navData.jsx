@@ -17,19 +17,19 @@ const nav = [
   {
     id: 4,
     name: "Hatlar",
-    path: "/hatlar",
+    path: "/messages",
     notificationClassName: "inbox",
     messages: 5,
   },
   {
     id: 5,
     name: "Teswirler",
-    path: "/teswirler",
+    path: "/requests",
   },
   {
     id: 6,
     name: "Sazlamalar",
-    path: "/sazlamalar",
+    path: "/fixations",
   },
 ];
 
