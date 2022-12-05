@@ -77,31 +77,6 @@
     .date {
       margin: 0 15px;
     }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 5px;
-      margin-bottom: 10px;
-      thead {
-        background-color: #3c3c48;
-        width: 100%;
-        border: none;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 19px;
-        color: #ffffff;
-        text-align: left;
-        th {
-          padding: 5px 15px;
-        }
-      }
-
-      tbody {
-        td {
-          padding: 10px 15px;
-        }
-      }
-    }
   }
   a {
     @include link;

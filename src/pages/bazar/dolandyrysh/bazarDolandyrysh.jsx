@@ -1,8 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import DataTable from "../../../components/table/Table";
 import "./bazar-d.scss";
 
-const salesTable = [
+const columns = [
+  { field: "name", headerName: "Ady", width: 150 },
+  { field: "quantity", headerName: "Ulanylan sany", width: 150 },
+  { field: "duration", headerName: "Dowamlylygy", width: 150 },
+  { field: "dueDate", headerName: "Gutarýan möhleti", width: 160 },
+];
+
+const rows = [
   {
     id: "coupon1",
     name: "Kupon1",
@@ -76,7 +84,7 @@ function bazarDolandyrysh() {
       </div>
 
       <div className="sales-info">
-        <h3 className="font-size-medium">Satuwyň maglumatlary</h3>
+        <h3 className="font-size-medium">Işjeň kuponlar</h3>
         <div className="date last-refresh">
           <span className="font-size-small">Soňky täzelenen wagty:</span>
           <span id="date" className="font-size-small">
@@ -86,26 +94,8 @@ function bazarDolandyrysh() {
             10/10/22
           </span>
         </div>
-        <table>
-          <thead>
-            <th>Ady</th>
-            <th>Ulanylan sany</th>
-            <th>Dowamlylygy</th>
-            <th>Gutarýan möhleti</th>
-          </thead>
-          <tbody>
-            {salesTable.map((tr) => {
-              return (
-                <tr key={tr.id}>
-                  <td>{tr.name}</td>
-                  <td>{tr.quantity}</td>
-                  <td>{tr.duration}</td>
-                  <td>{tr.dueDate}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+
+        <DataTable headerColor="#3C3C48" rows={rows} columns={columns} />
         <NavLink to="#">
           Ähli kuponlar<span>&gt;</span>
         </NavLink>
