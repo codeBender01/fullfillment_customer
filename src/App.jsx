@@ -19,6 +19,7 @@ const Mushderiler = lazy(() => import("./pages/mushderiler/mushderiler"));
 const Login = lazy(() => import("./pages/login/login"));
 const SignUp = lazy(() => import("./pages/signup/signup"));
 const Banners = lazy(() => import("./pages/bazar/bannerlar/bannerlar"));
+const Messages = lazy(() => import("./pages/bazar/hatlar/hatlar"));
 const Requests = lazy(() => import("./pages/bazar/teswirler/teswirler"));
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/management" element={<Dolandyrysh />} />
             <Route path="/marketmanagement" element={<BazarDolandyrysh />} />
             <Route path="/banners" element={<Banners />} />
+            <Route path="/messages" element={<Messages />} />
             <Route path="/requests" element={<Requests />} />
             <Route path="/orders" element={<Sargytlar />}></Route>
             <Route path="/products/*" element={<Onumler />}></Route>

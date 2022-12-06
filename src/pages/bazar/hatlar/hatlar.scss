@@ -1,0 +1,52 @@
+.messages {
+  width: 100%;
+  .messages-list {
+    width: 45%;
+    padding-top: 20px;
+    padding-inline: 10px;
+    .message {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      margin-bottom: 10px;
+      .profile-pic {
+        position: relative;
+        margin: 0 10px 0 20px;
+        width: 20%;
+        .dot-icon {
+          position: absolute;
+          right: 10%;
+          bottom: 0;
+        }
+        img {
+          object-fit: cover;
+        }
+      }
+
+      .name-message {
+        .name {
+          font-weight: 600;
+          line-height: 15px;
+          .time {
+            font-size: 12px;
+            float: right;
+          }
+
+          span {
+            font-size: 14px;
+          }
+        }
+
+        .message {
+          font-size: 14px;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .message.active {
+      background-color: #29b99d;
+      color: #ffffff;
+    }
+  }
+}
