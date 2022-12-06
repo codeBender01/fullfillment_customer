@@ -11,8 +11,8 @@ export default function DataTable(props) {
         rowsPerPageOptions={[5]}
         checkboxSelection={props.checkbox}
         onCellClick={props.onClick}
-        rowHeight={40}
-        headerHeight={40}
+        rowHeight={props.rowHeight}
+        headerHeight={props.headerHeight}
         sx={{
           "& ": {
             borderRadius: 0,

@@ -75,7 +75,13 @@ function Dolandyrysh() {
           </tbody>
         </table> */}
 
-        <DataTable headerColor="#3C3C48" rows={rows} columns={columns} />
+        <DataTable
+          headerColor="#3C3C48"
+          rows={rows}
+          columns={columns}
+          rowHeight={40}
+          headerHeight={40}
+        />
       </div>
 
       <div className="payment-info">

@@ -1,0 +1,48 @@
+.banners {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  .banners-table {
+    width: 70%;
+
+    .edit-icon {
+      margin-left: auto;
+    }
+
+    .icon {
+      cursor: pointer;
+    }
+
+    .product-img {
+      width: 80%;
+    }
+  }
+
+  .end-line {
+    width: 30%;
+    position: relative;
+    .line {
+      height: 40px;
+      background-color: #3c3c48;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    button {
+      margin-top: 60px;
+      float: right;
+      border: none;
+      border-radius: 15px;
+      color: #ffffff;
+      background-color: #29b99d;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 15px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+}

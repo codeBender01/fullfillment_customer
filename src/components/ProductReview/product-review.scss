@@ -1,0 +1,57 @@
+.review {
+  width: 100%;
+  display: flex;
+  height: 25%;
+
+  .stars {
+    display: flex;
+    margin-top: 2px;
+
+    .star {
+      margin-inline: 1px;
+    }
+  }
+  .image-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .img {
+      width: 80%;
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+
+      p {
+        text-align: center;
+      }
+    }
+  }
+
+  .comments {
+    flex-direction: column;
+    justify-content: space-around;
+    .user-side {
+      display: flex;
+      .comment-name {
+        width: 80%;
+        margin-left: 10px;
+        .name {
+          align-items: center;
+          span {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 19px;
+            margin-right: 5px;
+          }
+        }
+
+        .comment {
+          width: 60%;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

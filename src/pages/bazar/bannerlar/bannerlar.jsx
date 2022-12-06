@@ -1,10 +1,96 @@
 import React from "react";
 import "./bannerlar.scss";
+import DataTable from "../../../components/table/Table";
+import pr from "../../../images/nav-2.png";
+import { GoPrimitiveDot } from "react-icons/go";
+import { FiEdit } from "react-icons/fi";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { IconContext } from "react-icons";
+
+const columns = [
+  { field: "order", headerName: "#", width: 10 },
+  {
+    field: "image",
+    headerName: "Surat",
+    width: 120,
+    renderCell: (params) => (
+      <img src={params.value} alt="product" className="product-img" />
+    ),
+  },
+  { field: "tag", headerName: "Belligi", width: 150 },
+  {
+    field: "active",
+    headerName: "Işjeň",
+    width: 120,
+    renderCell: (params) => {
+      if (params.value) {
+        return (
+          <IconContext.Provider
+            value={{
+              color: "#F2C94C",
+            }}
+          >
+            <GoPrimitiveDot />
+          </IconContext.Provider>
+        );
+      }
+
+      return (
+        <IconContext.Provider
+          value={{
+            color: "#4CE417",
+          }}
+        >
+          <GoPrimitiveDot />
+        </IconContext.Provider>
+      );
+    },
+  },
+  {
+    field: "editDelete",
+    headerName: "",
+    width: 100,
+    renderCell: () => [
+      <RiDeleteBinLine size={20} className="icon" />,
+      <FiEdit size={15} className="edit-icon icon" />,
+    ],
+  },
+];
+
+const rows = [
+  {
+    id: "banner-1",
+    order: "1",
+    image: pr,
+    tag: "ýokarky_sözbaşy",
+    active: false,
+  },
+  {
+    id: "banner-2",
+    order: "2",
+    image: pr,
+    tag: "ýokarky_sözbaşy",
+    active: true,
+  },
+];
 
 function Banners() {
   return (
     <div className="banners">
-      <div className="banners-table"></div>
+      <div className="banners-table">
+        <DataTable
+          headerColor="#3C3C48"
+          rows={rows}
+          columns={columns}
+          rowHeight={100}
+          headerHeight={41}
+        />
+      </div>
+
+      <div className="end-line">
+        <div className="line"></div>
+        <button className="add-banner">Banner goş</button>
+      </div>
     </div>
   );
 }
