@@ -95,7 +95,13 @@ function bazarDolandyrysh() {
           </span>
         </div>
 
-        <DataTable headerColor="#3C3C48" rows={rows} columns={columns} />
+        <DataTable
+          headerColor="#3C3C48"
+          rows={rows}
+          columns={columns}
+          rowHeight={40}
+          headerHeight={40}
+        />
         <NavLink to="#">
           Ähli kuponlar<span>&gt;</span>
         </NavLink>
