@@ -19,7 +19,7 @@ const nav = [
     name: "Hatlar",
     path: "/messages",
     notificationClassName: "inbox",
-    messages: 5,
+    messages: 4,
   },
   {
     id: 5,
