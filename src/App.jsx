@@ -37,7 +37,7 @@ function App() {
             <Route path="/messages" element={<Messages />} />
             <Route path="/requests" element={<Requests />} />
             <Route path="/orders" element={<Sargytlar />}></Route>
-            <Route path="/products/*" element={<Onumler />}></Route>
+            <Route path="/products" element={<Onumler />}></Route>
             <Route path="/customers" element={<Mushderiler />}></Route>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
