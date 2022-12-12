@@ -27,7 +27,7 @@ function Dropdown(props) {
         setSelectedSub(n.id);
       }
     }
-  });
+  }, [props.title.path, props.title.id, location.pathname, setSelectedDrop]);
 
   return (
     <div className="dropdown">
