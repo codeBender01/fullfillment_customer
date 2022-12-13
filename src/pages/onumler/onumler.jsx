@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./onumler.scss";
 import DataTable from "../../components/table/Table";
 import Switch from "@mui/material/Switch";
@@ -7,6 +7,8 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import acc from "../../images/accesory.png";
 import wear1 from "../../images/wear1.png";
 import wear2 from "../../images/wear2.png";
+import { IoIosArrowForward } from "react-icons/io";
+import ProductInfo from "./productModal/ProductInfo";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
@@ -34,6 +36,7 @@ const columns = [
               },
               "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
                 backgroundColor: "#57e777",
+                opacity: 0.7,
               },
             }}
           />
@@ -70,7 +73,7 @@ const columns = [
   { field: "category", headerName: "Kategoriýa", width: 120 },
   { field: "barCode", headerName: "Ştrih kody", width: 120 },
   { field: "discount", headerName: "Arzanladyş", width: 80 },
-  { field: "price", headerName: "Bahasy", width: 100 },
+  { field: "price", headerName: "Bahasy", width: 80 },
   { field: "inStock", headerName: "Mukdary", width: 80 },
 
   {
@@ -78,9 +81,9 @@ const columns = [
     headerName: "Işjeň",
     width: 100,
     renderCell: () => [
-      <RiDeleteBinLine size={20} className="icon" key="delete" />,
-      <FiEdit size={15} className="edit-icon icon" key="edit" />,
-      <FiSave size={15} className="edit-icon icon" key="save" />,
+      <RiDeleteBinLine size={25} className="icon" key="delete" />,
+      <FiEdit size={20} className="edit-icon icon" key="edit" />,
+      <FiSave size={22} className=" icon" key="save" />,
     ],
   },
 ];
@@ -137,16 +140,44 @@ const rows = [
 ];
 
 function Onumler() {
+  const [slide, setSlide] = useState(null);
+
+  const open = () => {
+    setSlide(true);
+  };
+  const close = () => {
+    setSlide(false);
+  };
+
   return (
     <div className="onumler">
-      <DataTable
-        headerColor="#3C3C48"
-        rows={rows}
-        columns={columns}
-        rowHeight={100}
-        headerHeight={41}
-        height={500}
-      />
+      <div className="products-table">
+        <DataTable
+          headerColor="#3C3C48"
+          rows={rows}
+          columns={columns}
+          rowHeight={100}
+          headerHeight={41}
+          height={500}
+          handleClick={open}
+        />
+      </div>
+      <div className="add-product">
+        <button className="add-btn">Önüm goş</button>
+      </div>
+
+      <div className="pagination">
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>...</li>
+          <li>10</li>
+        </ul>
+        <IoIosArrowForward />
+      </div>
+
+      <ProductInfo animate={slide} close={close} />
     </div>
   );
 }

@@ -13,6 +13,7 @@ export default function DataTable(props) {
         onCellClick={props.onClick}
         rowHeight={props.rowHeight}
         headerHeight={props.headerHeight}
+        onRowClick={props.handleClick}
         sx={{
           "& ": {
             borderRadius: 0,
@@ -27,6 +28,7 @@ export default function DataTable(props) {
           "& .MuiDataGrid-virtualScrollerRenderZone": {
             "& .MuiDataGrid-row": {
               fontSize: 14,
+              fontWeight: 600,
             },
           },
 

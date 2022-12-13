@@ -1,3 +1,56 @@
 .onumler {
   width: 100%;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  overflow-x: hidden;
+  .products-table {
+    width: 90%;
+
+    .edit-icon {
+      margin: 0 5px;
+    }
+
+    .icon {
+      cursor: pointer;
+    }
+  }
+
+  .add-product {
+    width: 10%;
+    .add-btn {
+      border: none;
+      height: 40px;
+      width: 100%;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 19px;
+      background-color: #29b99d;
+      padding: 5px 10px;
+      color: #ffffff;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7;
+        transition: all 0.2s;
+      }
+    }
+  }
+
+  .pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    ul {
+      display: flex;
+      width: 10%;
+      justify-content: space-between;
+      list-style: none;
+      li {
+        cursor: pointer;
+      }
+    }
+  }
 }
