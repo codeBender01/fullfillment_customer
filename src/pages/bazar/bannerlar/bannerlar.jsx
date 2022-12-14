@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./bannerlar.scss";
 import DataTable from "../../../components/table/Table";
 import pr from "../../../images/nav-2.png";
@@ -8,8 +8,8 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { IconContext } from "react-icons";
 import AddBanner from "./addBanner/AddBanner";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchBanners } from "../../../store/banners/banners";
+// import { useDispatch, useSelector } from "react-redux";
+// import { fetchBanners } from "../../../store/banners/banners";
 import axios from "axios";
 
 const columns = [

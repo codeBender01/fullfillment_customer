@@ -150,7 +150,7 @@ function Onumler() {
   };
 
   return (
-    <div className="onumler">
+    <div className={`onumler ${slide ? "high" : null}`}>
       <div className="products-table">
         <DataTable
           headerColor="#3C3C48"
