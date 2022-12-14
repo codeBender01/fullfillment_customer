@@ -4,7 +4,8 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100%;
   .products-table {
     width: 90%;
 
@@ -52,5 +53,9 @@
         cursor: pointer;
       }
     }
+  }
+
+  &.high {
+    height: 150vh;
   }
 }

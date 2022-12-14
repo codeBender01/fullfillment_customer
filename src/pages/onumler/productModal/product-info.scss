@@ -6,10 +6,10 @@
   top: 0;
   display: block;
   &.animate {
-    animation: linear 0.3s slideIn;
+    animation: linear 0.2s slideIn;
   }
   &#animate-back {
-    animation: slideOut 0.3s 1 linear forwards;
+    animation: slideOut 0.2s 1 linear forwards;
   }
 
   .nav-btns {
@@ -35,6 +35,136 @@
     .add-btn {
       background-color: #29b99d;
       color: #ffffff;
+    }
+  }
+
+  .info {
+    width: 95%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 30px;
+    .title {
+      font-weight: 600;
+      line-height: 22px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .product-images {
+    .image-fields {
+      display: flex;
+      width: 50%;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      height: fit-content;
+      .img {
+        width: 18%;
+        border-radius: 15px;
+        height: 90px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .uploaded-img {
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 15px;
+        }
+      }
+
+      .empty-img {
+        position: relative;
+        border: 1px solid #29b99d;
+        img {
+          width: 40%;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          left: 50%;
+          top: 50%;
+        }
+      }
+    }
+  }
+
+  label {
+    display: table;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #202020;
+  }
+  input {
+    outline: none;
+    border: none;
+    padding: 10px 15px 10px 5px;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+  }
+
+  .inventory-info {
+    form {
+      display: flex;
+      div {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .about-product {
+    .name-cat {
+      display: flex;
+      div {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .add-info {
+    margin-top: 10px;
+    .add-title {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      margin-bottom: 5px;
+    }
+    .wrapper {
+      border: 1px solid grey;
+      border-radius: 5px;
+      border: none;
+    }
+    .rdw-image-wrapper {
+      display: none;
+    }
+
+    .editor {
+      background-color: #f3f3f3;
+      height: 100px;
+      overflow-y: hidden;
+      font-size: 14px;
+      padding: 10px 5px;
+      &::placeholder {
+        color: #000000;
+        opacity: 1;
+      }
+    }
+  }
+
+  .sales-info {
+    form {
+      display: flex;
+      div {
+        margin-right: 20px;
+      }
     }
   }
 }
