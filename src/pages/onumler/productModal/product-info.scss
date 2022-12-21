@@ -167,6 +167,10 @@
       }
     }
   }
+
+  .ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+    padding: 30px;
+  }
 }
 
 @keyframes slideIn {

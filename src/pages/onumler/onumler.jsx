@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./onumler.scss";
 import DataTable from "../../components/table/Table";
 import Switch from "@mui/material/Switch";
 import { FiSave, FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
-import acc from "../../images/accesory.png";
+
 import wear1 from "../../images/wear1.png";
-import wear2 from "../../images/wear2.png";
-import { IoIosArrowForward } from "react-icons/io";
+
 import ProductInfo from "./productModal/ProductInfo";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../../store/products/products";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
@@ -24,7 +25,6 @@ const columns = [
           <Switch
             {...label}
             defaultChecked
-            disabled
             sx={{
               "& .css-jsexje-MuiSwitch-thumb": {
                 color: "#ffffff",
@@ -88,62 +88,44 @@ const columns = [
   },
 ];
 
-const rows = [
-  {
-    id: 1,
-    order: 1,
-    condition: true,
-    image: wear1,
-    name: "Önümiň ady",
-    category: "Eşik",
-    barCode: "192116271941",
-    discount: "0%",
-    price: "9999 TMT.",
-    inStock: "999",
-  },
-  {
-    id: 2,
-    order: 2,
-    condition: false,
-    image: wear2,
-    name: "Önümiň ady",
-    category: "Eşik",
-    barCode: "192116271941",
-    discount: "70%",
-    price: "9999 TMT.",
-    inStock: "999",
-  },
-  {
-    id: 3,
-    order: 3,
-    condition: true,
-    image: acc,
-    name: "Önümiň ady",
-    category: "Aksesuar",
-    barCode: "192816272941",
-    discount: "50%",
-    price: "9999 TMT.",
-    inStock: "999",
-  },
-  {
-    id: 4,
-    order: 4,
-    condition: false,
-    image: acc,
-    name: "Önümiň ady",
-    category: "Aksesuar",
-    barCode: "192816272941",
-    discount: "80%",
-    price: "9999 TMT.",
-    inStock: "999",
-  },
-];
-
 function Onumler() {
   const [slide, setSlide] = useState(null);
 
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);
+
+  const sliceTheString = (str) => {
+    let finalStr = "";
+    for (let i = 0; i < str.length; i++) {
+      finalStr += str[i];
+      if (str[i] === " ") {
+        return finalStr;
+      }
+    }
+  };
+
+  const rows = products.map((pr, i) => ({
+    id: pr.id,
+    order: i + 1,
+    condition: true,
+    image: pr.image ? pr.image : wear1,
+    name: pr.name_tm,
+    category: sliceTheString(pr.categories[0].name_tm),
+    barCode: pr.barcode,
+    discount: pr.discount,
+    price: `${pr.price} TMT`,
+    inStock: pr.stock_quantity,
+  }));
+
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(fetchProducts);
+    }
+  }, []);
+
   const open = () => {
     setSlide(true);
+    console.log(products);
   };
   const close = () => {
     setSlide(false);
@@ -158,23 +140,14 @@ function Onumler() {
           columns={columns}
           rowHeight={100}
           headerHeight={41}
-          height={500}
-          handleClick={open}
+          height={600}
+          displayTable={true}
         />
       </div>
       <div className="add-product">
-        <button className="add-btn">Önüm goş</button>
-      </div>
-
-      <div className="pagination">
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>...</li>
-          <li>10</li>
-        </ul>
-        <IoIosArrowForward />
+        <button className="add-btn" onClick={open}>
+          Önüm goş
+        </button>
       </div>
 
       <ProductInfo animate={slide} close={close} />

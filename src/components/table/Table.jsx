@@ -1,5 +1,26 @@
 import * as React from "react";
-import { DataGrid } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  gridPageCountSelector,
+  gridPageSelector,
+  useGridApiContext,
+  useGridSelector,
+} from "@mui/x-data-grid";
+import Pagination from "@mui/material/Pagination";
+
+function CustomPagination() {
+  const apiRef = useGridApiContext();
+  const page = useGridSelector(apiRef, gridPageSelector);
+  const pageCount = useGridSelector(apiRef, gridPageCountSelector);
+
+  return (
+    <Pagination
+      count={pageCount}
+      page={page + 1}
+      onChange={(event, value) => apiRef.current.setPage(value - 1)}
+    />
+  );
+}
 
 export default function DataTable(props) {
   return (
@@ -13,7 +34,9 @@ export default function DataTable(props) {
         onCellClick={props.onClick}
         rowHeight={props.rowHeight}
         headerHeight={props.headerHeight}
-        onRowClick={props.handleClick}
+        components={{
+          Pagination: CustomPagination,
+        }}
         sx={{
           "& ": {
             borderRadius: 0,
@@ -43,7 +66,7 @@ export default function DataTable(props) {
           },
 
           "& .MuiDataGrid-footerContainer": {
-            display: "none",
+            display: props.displayTable ? "flex" : "none",
           },
         }}
       />

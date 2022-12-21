@@ -38,23 +38,6 @@
     }
   }
 
-  .pagination {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-    ul {
-      display: flex;
-      width: 10%;
-      justify-content: space-between;
-      list-style: none;
-      li {
-        cursor: pointer;
-      }
-    }
-  }
-
   &.high {
     height: 150vh;
   }

@@ -1,20 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const baseURL = "http://localhost:3001/api/public/banners";
-const loginURL = "http://localhost:3001/api/roles/login";
+const bannersUrl = "http://localhost:3002/api/public/banners";
+const productsUrl = "http://localhost:3002/api/public/banners";
 
 const initialState = {
   banners: [],
   isLoading: false,
   hasErrors: false,
+  products: [],
 };
 
 export const bannersSlice = createSlice({
   name: "banners",
   initialState,
   reducers: {
-    getBanners: (state) => {
+    getItems: (state) => {
       state.isLoading = true;
     },
     getBannersSuccess: (state, { payload }) => {
@@ -22,44 +23,51 @@ export const bannersSlice = createSlice({
 
       state.isLoading = false;
     },
+    getProductsSuccess: (state, { payload }) => {
+      state.products = payload;
 
-    getBannersFailure: (state) => {
+      state.isLoading = false;
+    },
+
+    getItemsFailure: (state) => {
       state.isLoading = false;
       state.hasErrors = true;
     },
   },
 });
 
-export const { getBanners, getBannersSuccess, getBannersFailure } =
-  bannersSlice.actions;
+export const {
+  getItems,
+  getBannersSuccess,
+  getItemsFailure,
+  getProductsSuccess,
+} = bannersSlice.actions;
 
 export default bannersSlice.reducer;
 
 export function fetchBanners() {
   return async (dispatch) => {
-    dispatch(getBanners());
+    dispatch(getItems());
 
     try {
-      const response = await axios
-        .get(baseURL)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          throw err;
-        });
+      const response = await axios.get(bannersUrl).then((res) => {
+        console.log(res);
+      });
 
       dispatch(getBannersSuccess(response));
     } catch {
-      dispatch(getBannersFailure);
+      dispatch(getItemsFailure);
     }
   };
 }
 
-// export function postBanner() {
-//     return async (dispatch) => {
-//         try {
-//             await axios.post
-//         }
-//     }
-// }
+export const fetchProducts = async (dispatch) => {
+  dispatch(getItems);
+  try {
+    await axios.get(productsUrl).then((res) => {
+      dispatch(getProductsSuccess(res.data));
+    });
+  } catch (err) {
+    throw err;
+  }
+};
