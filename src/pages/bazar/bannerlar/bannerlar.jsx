@@ -91,7 +91,7 @@ function Banners() {
 
   const token = window.localStorage.getItem("token");
   // const dispatch = useDispatch();
-  const url = "http://localhost:3001/api/roles/banners/add";
+  const url = "http://localhost:3002/api/roles/banners/add";
 
   const handleClickOpen = () => {
     setImage(null);

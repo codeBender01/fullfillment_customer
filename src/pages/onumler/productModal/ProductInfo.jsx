@@ -3,9 +3,10 @@ import "./product-info.scss";
 import wear1 from "../../../images/wear1.png";
 import wear2 from "../../../images/wear2.png";
 import upload from "../../../images/upload.png";
-import { Editor } from "react-draft-wysiwyg";
-import { EditorState, ContentState, convertFromHTML } from "draft-js";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import axios from "axios";
+import AddBanner from "../../bazar/bannerlar/addBanner/AddBanner";
 
 const images = [
   {
@@ -19,18 +20,46 @@ const images = [
 ];
 
 const emptySlots = [1, 2, 3, 4, 5, 6, 7, 8];
-const sample = "";
 
 function ProductInfo(props) {
-  const [text, setText] = useState(() =>
-    EditorState.createWithContent(
-      ContentState.createFromBlockArray(
-        convertFromHTML(
-          "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in</p>"
-        )
-      )
-    )
-  );
+  const [openModal, setOpenModal] = useState(false);
+  const [productImage, setProductImage] = useState(null);
+  const [productTitle, setProductTitle] = useState("");
+  const [imageUrl, setImageUrl] = useState(null);
+
+  const url =
+    "http://localhost:3002/api/roles/products/add-images/86103333-313c-48c8-95ae-175ab2241bd6";
+
+  const handleClickOpen = () => {
+    setProductImage(null);
+    setImageUrl(null);
+    setProductTitle(null);
+    setOpenModal(true);
+  };
+
+  const handleClose = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+
+    const token = window.localStorage.getItem("token");
+
+    if (productImage) {
+      formData.append("photo", productImage);
+
+      try {
+        await axios.post(url, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + token,
+          },
+        });
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    setOpenModal(false);
+  };
 
   return (
     <div
@@ -57,7 +86,11 @@ function ProductInfo(props) {
 
           {emptySlots.map((slot) => {
             return (
-              <div className="empty-img img" key={slot}>
+              <div
+                className="empty-img img"
+                key={slot}
+                onClick={handleClickOpen}
+              >
                 <img src={upload} alt="upload" />
               </div>
             );
@@ -94,14 +127,25 @@ function ProductInfo(props) {
           </div>
           <div className="add-info">
             <div className="add-title">Goşmaça maglumatlar</div>
-
-            <Editor
-              wrapperClassName="wrapper"
-              editorClassName="editor"
-              toolbarClassName="toolbar"
-              editorState={text}
-            />
           </div>
+
+          <CKEditor
+            editor={ClassicEditor}
+            data="<p>Hello from CKEditor 5!</p>"
+            onReady={(editor) => {
+              editor.ui.view.editable.element.style.padding = "20px";
+            }}
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              console.log({ event, editor, data });
+            }}
+            onBlur={(event, editor) => {
+              console.log("Blur.", editor);
+            }}
+            onFocus={(event, editor) => {
+              console.log("Focus.", editor);
+            }}
+          />
         </form>
       </div>
 
@@ -118,6 +162,16 @@ function ProductInfo(props) {
           </div>
         </form>
       </div>
+
+      <AddBanner
+        handleClose={handleClose}
+        open={openModal}
+        setImage={setProductImage}
+        setImageUrl={setImageUrl}
+        imageUrl={imageUrl}
+        imageName={productTitle}
+        setTitle={setProductTitle}
+      />
     </div>
   );
 }

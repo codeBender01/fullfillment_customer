@@ -56,24 +56,6 @@ function Dolandyrysh() {
             10/10/22
           </span>
         </div>
-        {/* <table>
-          <thead>
-            <th>Aralyk</th>
-            <th>Möçberi</th>
-            <th>Sany</th>
-          </thead>
-          <tbody>
-            {salesTable.map((tr) => {
-              return (
-                <tr key={tr.id}>
-                  <td>{tr.text}</td>
-                  <td>{tr.total}</td>
-                  <td>{tr.quantity}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table> */}
 
         <DataTable
           headerColor="#3C3C48"
@@ -152,7 +134,7 @@ function Dolandyrysh() {
 
           {arr.map((el) => {
             return (
-              <div className="message">
+              <div className="message" key={el}>
                 <div className="profile-pic">
                   <img src={profilePic} alt="profile" />
                 </div>
