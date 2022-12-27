@@ -18,7 +18,7 @@ const columns = [
   {
     field: "condition",
     headerName: "Ýagdaý",
-    width: 100,
+    width: 80,
     renderCell: (params) => {
       if (params.value) {
         return (
@@ -70,7 +70,7 @@ const columns = [
     ),
   },
   { field: "name", headerName: "Ady", width: 120 },
-  { field: "category", headerName: "Kategoriýa", width: 120 },
+  { field: "category", headerName: "Kategoriýa", width: 140 },
   { field: "barCode", headerName: "Ştrih kody", width: 120 },
   { field: "discount", headerName: "Arzanladyş", width: 80 },
   { field: "price", headerName: "Bahasy", width: 80 },
@@ -110,7 +110,7 @@ function Onumler() {
     condition: true,
     image: pr.image ? pr.image : wear1,
     name: pr.name_tm,
-    category: sliceTheString(pr.categories[0].name_tm),
+    category: pr.categories.length > 0 ? pr.categories[0].name_tm : "",
     barCode: pr.barcode,
     discount: pr.discount,
     price: `${pr.price} TMT`,
@@ -125,7 +125,6 @@ function Onumler() {
 
   const open = () => {
     setSlide(true);
-    console.log(products);
   };
   const close = () => {
     setSlide(false);

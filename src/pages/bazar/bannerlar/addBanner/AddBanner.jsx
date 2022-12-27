@@ -54,7 +54,7 @@ function AddBanner(props) {
           id="customized-dialog-title"
           onClose={props.handleClose}
         >
-          Banner goş
+          {props.modalTitle}
         </BootstrapDialogTitle>
         <DialogContent
           sx={{
@@ -134,6 +134,7 @@ function AddBanner(props) {
                 className="add-banner"
                 onChange={(event) => {
                   props.setImage(event.target.files[0]);
+
                   props.setImageUrl(URL.createObjectURL(event.target.files[0]));
                   props.setTitle(event.target.files[0].name);
                 }}
@@ -152,7 +153,7 @@ function AddBanner(props) {
         </DialogContent>
         <DialogActions>
           <Button
-            onClick={props.handleClose}
+            onClick={props.handleUpload}
             sx={{
               color: "#ffffff",
               bgcolor: "#29b99d",

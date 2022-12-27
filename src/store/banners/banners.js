@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const bannersUrl = "http://localhost:3002/api/public/banners";
-const productsUrl = "http://localhost:3002/api/public/banners";
 
 const initialState = {
   banners: [],
@@ -36,12 +35,8 @@ export const bannersSlice = createSlice({
   },
 });
 
-export const {
-  getItems,
-  getBannersSuccess,
-  getItemsFailure,
-  getProductsSuccess,
-} = bannersSlice.actions;
+export const { getItems, getBannersSuccess, getItemsFailure } =
+  bannersSlice.actions;
 
 export default bannersSlice.reducer;
 
@@ -61,13 +56,4 @@ export function fetchBanners() {
   };
 }
 
-export const fetchProducts = async (dispatch) => {
-  dispatch(getItems);
-  try {
-    await axios.get(productsUrl).then((res) => {
-      dispatch(getProductsSuccess(res.data));
-    });
-  } catch (err) {
-    throw err;
-  }
-};
+// this is temporary function for testing purposes
