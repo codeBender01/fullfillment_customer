@@ -148,6 +148,7 @@ function Banners() {
         imageUrl={imageUrl}
         imageName={title}
         setTitle={setTitle}
+        modalTitle={"Banner goş"}
       />
     </div>
   );

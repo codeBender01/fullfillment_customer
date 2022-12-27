@@ -25,12 +25,6 @@ function Header() {
       }
     }
 
-    // for (let side of sidebar) {
-    //   if (location.pathname === side.path) {
-    //     setSelectedNavbarLink(side.id);
-    //   }
-    // }
-
     if (location.pathname === "/login" || location.pathname === "/signup") {
       setIsLogin(true);
     } else {
